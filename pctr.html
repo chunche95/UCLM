@@ -192,7 +192,7 @@
         En UNIX, los procesos se identifican con un <strong><i>ID del proceso</i></strong>. El proceso encargado de ejecutar la solicitud para crear un proceso se denomina <i>proceso padre</i>, mientras que el nuevo proceso se denomina <i>proceso hijo</i>. Las primitivas POSIX usadas para obtener 
         dichos identificadires son los siguientes:
         <div>
-          <img src="images/estados-de-un-proceso.png" alt="" >
+          <img src="images/estados-de-un-proceso.png"  id="responsive" alt="" >
         </div>
         <blockquote>
           <p>
@@ -215,13 +215,42 @@
         UNIX asocia cada proceso a un usuario en particular, <i>propietario del proceso</i>. <br>
         <cite>
           <blockquote>
-            <h3>Proceso init</h3>
+            <h5>Proceso init</h5>
             <p>
               <i>init</i> es el primer proceso en ejecución, con PID 1m y es el responsable de la creación del resto de procesos.
             </p>
           </blockquote>
         </cite>
+        Para obtener el ID del usuario se hace uso de <code>getuid().</code><br>
         Cada usuario tiene asociado un ID único dentro del sistema, es posible usar la primitiva <code>geteuid()</code> para obtener el ID del usuario efectivo.
+      </p>
+      <h4>Primitivas básicas en POSIX</h4>
+      <p>
+        La creación de procesos se realiza mediante la llamada al sistema <b>fork()</b>. Cuando se hace esto, se genera una <strong>copia exacta</strong> que deriva en un nuevo proceso, el proceso hijo, que recibe una copia del espacio de direcciones del proceso padre. Ahora, ambos procesos 
+        continúan su ejecución.
+        <div>
+          <img src="images/creacion-de-un-proceso-mediante-fork().png" id="responsive"  alt="">
+        </div>
+        <div>
+          <blockquote>
+            <p>
+              Llamada fork() al sistema.
+            </p>
+            <pre>
+              <code>
+              #include <sys/types.h>
+              #include <unistd.h>
+
+              pid_t fork(void);
+              </code>
+            </pre>
+          </blockquote>
+        </div>
+        <strong>fork()</strong> devuelve el valor 0 al hijo y el PID del hijo al padre. La creación de dos procesos totalmente idénticos no sería muy útil.
+      </p>
+      <h5>Independencia</h5>
+      <p>
+        Los procesos son independientes entre sí, por lo que no tienen mecanismos implícitos para compartir información y sincronizarse. Incluso con la llamada <i>fork()</i>, los procesos padre e hijo son totalmente independientes.
       </p>
     </p>
     </div>
