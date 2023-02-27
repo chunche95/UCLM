@@ -2421,7 +2421,10 @@ blockquote code {
     font-size: 105%;
 }
 
-
+code {
+  color: cyan;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
 /*=======================================================================
 * Template Name: WINK - MUSIC HTML TEMPLATE

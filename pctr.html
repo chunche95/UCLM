@@ -212,7 +212,16 @@
         </pre>
         </blockquote>
         Las primitivas <i>getpid()</i> y <i>getppid()</i> se usa para obtener los identificadores de un proceso, ya sea el suyo propio o el de su padre. <br>
-        UNIX asocia cada proceso a un usuario en particular, <i>propietario del proceso</i>.
+        UNIX asocia cada proceso a un usuario en particular, <i>propietario del proceso</i>. <br>
+        <cite>
+          <blockquote>
+            <h3>Proceso init</h3>
+            <p>
+              <i>init</i> es el primer proceso en ejecución, con PID 1m y es el responsable de la creación del resto de procesos.
+            </p>
+          </blockquote>
+        </cite>
+        Cada usuario tiene asociado un ID único dentro del sistema, es posible usar la primitiva <code>geteuid()</code> para obtener el ID del usuario efectivo.
       </p>
     </p>
     </div>
