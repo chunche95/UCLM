@@ -47,7 +47,14 @@ body{
     -o-background-size: cover;        
     font-size: calc(2px+5%)    
 }
-
+h1 , h2, h3, h4, h5, h6 {
+  font-style: oblique;
+  font-weight: bolder;
+  font-variant: small-caps;
+  text-align: center;
+  padding-left: 9%;
+  color: goldenrod;
+}
 ::-webkit-scrollbar{
     width: 0.1px;
 }
