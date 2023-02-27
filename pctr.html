@@ -95,7 +95,7 @@
   <!-- HEADING -->
   <div class="heading">
       <div class="text">
-        MUSIC
+        Programación concurrente y en tiempo real.
       </div>
   </div>
   
@@ -112,8 +112,8 @@
     <!-- BLOG INFO -->
 
     <div class="blog-info">
-      <div class="blog-date text-scroll">Febrero 25, 2023</div>
-      <div class="blog-duration img-scroll text-scroll"><img src="images/clock.png" alt="clock">&nbsp; 4 Min </div>
+      <div class="blog-date text-scroll">Febrero 27, 2023</div>
+      <div class="blog-duration img-scroll text-scroll"><img src="images/clock.png" alt="clock">&nbsp; XX Min </div>
     </div>
   
     <!-- BLOG INFO -->
@@ -121,7 +121,7 @@
 
   <!-- BLOG HEADING -->
   <div class="blog-heading text-scroll">
-    Zona de mis canciones favoritas...
+    
   </div>
 
   <!-- BLOG HEADING -->
@@ -129,30 +129,93 @@
 
   <!-- PARAGRAPH -->
   <div class="para text-scroll">
-    mientras creo nuevo contenido.
+    <h2>Conceptos básicos.</h2>    
   </div>
   <!-- PARAGRAPH -->
 
 
     <!-- PARAGRAPH -->
     <div class="para text-scroll">
-      Bueno, es mi 'Spotify' en mi zona web, mientras estudio y genero el contenido aprendido.
+      <p>
+        <ul>
+            <li>Conceptos básicos</li>
+            <li>Semáforos y memoria compartida</li>
+            <li>Paso de mensajes</li>
+            <li>Otros mecanismos de sincronización</li>
+            <li>Planificación en sistemas de tiempo real</li>
+        </ul>
+      </p>
     </div>
       <!-- PARAGRAPH -->
-      <!-- reproductor -->
 
-      <!-- reproductor -->
-      <!-- PARAGRAPH ITALIC-->
-    <div class="para text-scroll italic ">
-     <i>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda nisi, libero facere mollitia iure ex aspernatur corporis!"</i>
-        </div>
-      <!-- PARAGRAPH ITALIC -->
-
-
-        <!-- PARAGRAPH -->
+    <!-- PARAGRAPH -->
     <div class="para text-scroll">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime expedita ratione excepturi aspernatur! Doloribus dicta, sit autem est praesentium minima eos aperiam! Illo vel totam odio dicta accusantium cupiditate doloribus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio quam inventore laborum nulla voluptatibus possimus veniam expedita cupiditate hic facere id at quod officiis cum sint, aliquid quas corporis suscipit!
-         </div>
+    <h3>Conceptos básicos.</h3>
+    <p>
+       <div>        
+        <p>
+          En este capítulo  se plantean los aspectos básicos relativos al concepto de <b>proceso</b>, estableciendo las principales diferencias con respecto a una hebra o hilo y haciendo especial hincapié en su creación y gestión mediante primitivas POSIX.
+          <br>
+          La problemática que se pretende abordar está vinculada al concepto de <strong>sistema operativo multiproceso</strong>, donde se mejora la eficiencia del sistema pero plantea un problema con la <strong>sincronización</strong> en el acceso a los recursos.
+          Típicamente, esta problemática no se resuelve a nivel de sistema operativo, siendo responsabilidad del programador el garantizar un acceso consistente a los recursos. <br>
+          Este planteamiento general, se introduce mediante el problema del productor-consumidor,  teniendo que compartir  un buffer, y da lugar al concepto de <strong>sección crítica</strong>. Entre las soluciones planteadas destada el uso de <i>semáforos</i> y el 
+          <i>paso de mensajes</i> como mecanismos cásicos de sincronización.
+        </p>
+       </div>
+    </p>
+    <h3>El concepto de proceso</h3>
+    <p>
+      Un proceso se puede definir como un programa en ejecución. Además del propio código al que está vinculado, un proceso incluye el valor de un contador de programa y el contenido de ciertos registros del procesador. Generalmente, un proceso también incluye la pila del proceso,
+      usada para almacenar datos temporales, como variables locales, direcciones de retorno y parámetros de funciones, y una sección de datos con variables globales. <br>
+      Finalmente, un proceso también puede tener una sección de memoria reservada de manera dinámica.
+      
+      <h4>Gestión básica de procesos</h4>
+      <p>
+        Cada estado se define en base a la actividad desarrollada por un proceso en un instante determinado:
+        <ol>
+          <li>
+            <strong>1. Nuevo</strong> donde el proceso está siendo creado.
+          </li>
+          <li>
+            <strong>2. En ejecución</strong> donde el proceso está ejecutando operaciones o instrucciones.
+          </li>
+          <li>
+            <strong>3. En espera</strong> donde el proceso está a la espera de que se produzca un determinado eventom típicamente la finalización de una operación de E/S.
+          </li>
+          <li>
+            <strong>4. Preparado</strong> donde el proceso está a la espera de que le asignen alguna unidad de procesamiento.
+          </li>
+          <li>
+            <strong>5. Terminado</strong> donde el proceso ya ha finalizado su ejecución.
+          </li>
+        </ol>
+        En UNIX, los procesos se identifican con un <strong><i>ID del proceso</i></strong>. El proceso encargado de ejecutar la solicitud para crear un proceso se denomina <i>proceso padre</i>, mientras que el nuevo proceso se denomina <i>proceso hijo</i>. Las primitivas POSIX usadas para obtener 
+        dichos identificadires son los siguientes:
+        <div>
+          <img src="images/estados-de-un-proceso.png" alt="" >
+        </div>
+        <blockquote>
+          <p>
+            Primitivas POSIX ID Proceso.
+          </p>
+          <pre>
+          <code>
+            #include <sys/types.h>
+            #include <unistd.h>
+
+            pid_t getpid (void);   // ID proceso.
+            pid_t getppid (void);  // ID proceso padre.
+
+            uid_t getuid (void); // ID usuario.
+            uid_t geteuid (void); // ID usuario efectivo.
+          </code>
+        </pre>
+        </blockquote>
+        Las primitivas <i>getpid()</i> y <i>getppid()</i> se usa para obtener los identificadores de un proceso, ya sea el suyo propio o el de su padre. <br>
+        UNIX asocia cada proceso a un usuario en particular, <i>propietario del proceso</i>.
+      </p>
+    </p>
+    </div>
        <!-- PARAGRAPH -->
 
        <!-- SHARE LINKS -->
@@ -169,7 +232,7 @@
        <!-- SHARE LINKS -->
 
        <div class="signature">
-        <span class="text-scroll">Pau Bermudez.</span> 
+        <span class="text-scroll"> Pau Bermudez.</span> 
      </div>
 
 </div>
