@@ -255,6 +255,14 @@ table, th, td {
 .img.reveal img , .img-scroll.reveal img {
     animation: revealImgAnimation 0.8s ease forwards;
 }
+
+#responsive {
+  border:"5px"; 
+  height:80%;
+  width:calc(2em + 38%);
+  align-items: center;
+}
+
 @keyframes revealImgAnimation {
     0% {
         opacity: 0;
