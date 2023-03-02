@@ -251,6 +251,43 @@
       <h5>Independencia</h5>
       <p>
         Los procesos son independientes entre sí, por lo que no tienen mecanismos implícitos para compartir información y sincronizarse. Incluso con la llamada <i>fork()</i>, los procesos padre e hijo son totalmente independientes.
+        <div>
+          <img src="images/cadena-de-procesos-generada-por-el-listado-de-codigo-anexo.png" id="responsive" alt="">
+        </div>
+        <p>
+          Uso básico de fork()
+        </p>
+        <blockquote>
+          <pre>
+            <code>
+              #include <sys/types.h>
+              #include <unistd.h>
+              #include <stdlib.h>
+              #include <stdio.h>
+              
+              int main(void) {
+                int *valor = malloc(sizeof(int));
+                *valor = 0;
+                fork();
+                *valor = 13;
+                printf(%ld: %d\n", (long)getpid(), *valor);
+
+                free(valor);
+                return 0;
+
+              }
+            </code>
+          </pre>
+        </blockquote>
+        <p>
+          Salida del programa:
+        </p>
+        <blockquote>
+          <pre>
+            13243: 13
+            13244: 13
+          </pre>
+        </blockquote>
       </p>
     </p>
     </div>
