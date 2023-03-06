@@ -288,6 +288,14 @@
             13244: 13
           </pre>
         </blockquote>
+        <h5>¿Cómo distinguiría el código del proceso hijo y el del padre?</h5>
+        <p>
+          Después de la ejecución de <i>fork()</i>, existen dos procesos y cada uno de ellos mantiene una copia de la variable <i>valor</i>. 
+          No es posible distinguir entre el proceso padre y el hijo, ya que no se controló el valor devuelto por fork(). <br>
+          El uso de fork() está ligado al de algún tipo de estructura de control, como por ejemplo un bucle for. <br>
+          <br>
+          
+        </p>
       </p>
     </p>
     </div>
