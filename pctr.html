@@ -297,6 +297,9 @@
           Idealmente, sería necesario algún tipo de mecanismo que posibilitara asignar un nuevo módulo ejecutable a un proceso después de su creación. Este mecanismo es precisamente el esquema en el que se basa la familia exec de llamadas al sistema. 
           Para ello, la forma de combinar fork() y alguna primitiva de la familia exec se basa en permitir que el proceso hijo ejecute exec para el nuevo código, mientras que el padre continúa con su flujo de ejecución normal. 
           <blockquote>
+            <p>
+              Creación de una cadena de procesos.
+            </p>
             <pre>
               <code>
                 #include <sys/types.h>
@@ -322,8 +325,28 @@
               </code>
             </pre>
           </blockquote>
-          El uso de operacionese del tipo exec implica que el proceso padre tenga que integrar algún tipo de mecanismo de espera para la correcta finalización de los procesos que creo con anterioridad, además, de llevar a cabo algún tipo de liberación de recursos. <br>
-          
+          El uso de operacionese del tipo exec implica que el proceso padre tenga que integrar algún tipo de mecanismo de espera para la correcta finalización de los procesos que creo con anterioridad, además, de llevar a cabo algún tipo de liberación de recursos.
+          <blockquote>
+            <p>
+              Familia de llamadas exec
+            </p>
+            <pre>
+              <code>
+                #include <unistd.h>
+                
+                int execl (const char *path, const char *arg, ...);
+                int execlp (const char *file, const char *arg, ...);
+                int execle (const char *path, const char *arg, ..., char *const envp[]);
+
+                int execv (const char *path, char *const argv[]);
+                int execvp (const char *file, char *const argv[]);
+                int execve (const char *path, char *const argv[], char *conts envp[]);
+              </code>
+            </pre>
+          </blockquote>
+          <div>
+            <img src="images/Esquema-grafica-de-la-combinacion-fork()+exec().png" class="resposive" id="responsive" alt="">
+          </div>
         </p>
       </p>
     </p>
