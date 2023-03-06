@@ -294,6 +294,35 @@
           No es posible distinguir entre el proceso padre y el hijo, ya que no se controló el valor devuelto por fork(). <br>
           El uso de fork() está ligado al de algún tipo de estructura de control, como por ejemplo un bucle for. <br>
           <br>
+          Idealmente, sería necesario algún tipo de mecanismo que posibilitara asignar un nuevo módulo ejecutable a un proceso después de su creación. Este mecanismo es precisamente el esquema en el que se basa la familia exec de llamadas al sistema. 
+          Para ello, la forma de combinar fork() y alguna primitiva de la familia exec se basa en permitir que el proceso hijo ejecute exec para el nuevo código, mientras que el padre continúa con su flujo de ejecución normal. 
+          <blockquote>
+            <pre>
+              <code>
+                #include <sys/types.h>
+                #include <unistd.h>
+                #include <stdio.h>
+
+                int main (void) {
+                  int i = 1, n = 4;
+                  pid_t childpid;
+
+                  for ( i = 1; i &lt; n; i++ ) {
+                    childpid = fork();
+                    if ( childpid &gt 0 ) { <i>// Código del padre</i>
+                      break;
+                    }
+                  }
+                  <i>// PID == 1?</i>
+                  printf("Proceso %d con padre %ld \n", (long)getpid(), (long)getpid());
+                  
+                  pause();
+                  return 0;
+                }
+              </code>
+            </pre>
+          </blockquote>
+          El uso de operacionese del tipo exec implica que el proceso padre tenga que integrar algún tipo de mecanismo de espera para la correcta finalización de los procesos que creo con anterioridad, además, de llevar a cabo algún tipo de liberación de recursos. <br>
           
         </p>
       </p>
