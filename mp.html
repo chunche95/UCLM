@@ -209,7 +209,7 @@
                 <h5>Análisis empírico.</h5>
                 <p>
                     Ejecutar el algortimo para varios tamaños de entrada y medir el tiempo de ejecución.
-                    <table style="padding-left: 50%;  align-content: center;">
+                    <table style="padding-left: 6%;  align-content: center;">
                         <tr>
                             <td>Size (n)</td>
                             <td>T (seconds)</td>
@@ -274,7 +274,30 @@
                     En el análisis teórico de algoritmos es común estimar su complejidad en el sentido asintótico, es decir, estimar la función de complejidad para una entrada arbitrariamente grande ( n &rarr; ∞) <br>
                     <h6>¿Cómo determinamos la complejidad de un algoritmo?</h6>
                     <p>
-                        
+                        <div>
+                            <strong>paso 1</strong> Determinamos el tiempo de ejecución, en función del tamaño del problema, a travñes del número de operaciones elementales realizadas. <br>
+                            <strong>paso 2.</strong> Nos centramos en el comportamiento asintótico de la expresión anterior. <br>
+                            <strong>paso 3.</strong> Limitamos la tasa de creciemiento de la función resultante anterior usando notación asintótica.
+                        </div>
+                        Formalmente, nuestro tiempo de ejecución, T. <br>
+                        <div>
+                            T: I &rarr; R<sup>+</sup>
+                        </div>
+                        es un mapeo del conjunto de todas las entradas, I, al tiempo que toma esa entrada.
+                    </p>
+                    <h6>¿Cómo agrupamos las entradas?</h6>
+                    <p>
+                        Por tamaño, n.
+                    </p>
+                    <h6>¿Qué queremos decir con el tamaño de una entrada?</h6>
+                    <p>
+                        Depende del programa.
+                        <ol>
+                            <li>Integer input &rarr; Nº de dígitos</li>
+                            <li>Set input &rarr; Nº de elementos en el conjunto</li>
+                            <li>Text string &rarr; Nº de caracteres</li>
+                            <li>Generalmente obvio</li>
+                        </ol>
                     </p>
                 </p>
             </p>
