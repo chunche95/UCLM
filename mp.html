@@ -302,6 +302,74 @@
                 </p>
             </p>
         </p>
+        <h2>Podemos definir tres medidas de rendimiento.</h2>
+        <p>
+            <h3>Worst-case</h3>
+            <p>
+                T(n) tiempo máximo del algoritmo en cualquier entrada de tamaño n.
+                <div>
+                    <img src="images/worst-case.png" id="responsive" alt="">
+                </div>
+            </p>
+            <h3>Best-case</h3>
+            <p>
+                T(n) tiempo mínimo del algortimo en cualquier entrada de tamaño n.
+                <div>
+                    <img src="images/best-case.png" id="responsive" alt="">
+                </div>
+            </p>
+            <h3>Average-case</h3>
+            <p>
+                T(n) tiempo esperado del algoritmo sobre todas las entradas de tamaño n. En la expresión anterior estamos 
+                asumiendo que todas las entradas son igualmente probables - si no es así, necesitamos saber la función de 
+                distribución de la probabilidad P(i).
+                <div>
+                    <img src="images/average-case.png" id="responsive" alt="">
+                    <img src="images/función de distribucion de la probabilidad P(i).png" id="responsive" alt="">
+                </div>
+            </p>
+            <hr>
+            El peor escenario da un límite superior en cuanto a cuánto tiempo se necesitará para resolver cualquier instancia del problema. 
+            Este va a ser nuestro caso de referencia, para determinar el tiempo de ejecución de un algoritmo:
+            <table>
+                <tr>
+                    <td>a) Necesitamos el algoritmo.</td>
+                </tr>
+                <tr>
+                    <td>b) Identificamos el nº de operaciones en él.</td>
+                </tr>
+                <tr>
+                    <td>c) Agregamos el tiempo necesarioi para ejecutar cada operación.</td>
+                </tr>
+            </table>            
+        </p>
+        <h2>Tiempo de ejecución de algoritmos</h2>
+        <p>
+            La expresión en tiempo de ejecución debe ser independiente de la máquina. <br>
+            Para eso, necesitamos un modelo de computación, una computación 'hipotética', es decir:
+            <ol>
+                <li>- Sencillo</li>
+                <li>- Aplicable</li>
+            </ol>
+            Nuestra elección: El modelo de RAM (el más usado).
+        </p>
+        <h2>El modelo RAM.</h2>
+        <h3>Características</h3>
+        <p>
+            Modelo genérico de procesador único. <br>
+            Admite instrucciones simples en tiempo constante que se encuentran en computadoras reales.
+            <table>
+                <tr>
+                    <td>Aritmética ( + - * % suelo techo)</td>                    
+                </tr>
+                <tr>
+                    <td>Movimiento de datos (cargar, almacenar, copiar)</td>
+                </tr>
+                <tr>
+                    <td>Control (bifurcación, llamada a subrutina)</td>
+                </tr>
+            </table>
+        </p>
        </div>
     </p>
     </div>

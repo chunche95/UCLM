@@ -53,10 +53,8 @@ h1 , h2, h3, h4, h5, h6 {
   font-variant: small-caps;
   text-align: center;
   padding-left: 9%;
-  color: goldenrod;
-}
-h6 {
-  size: 12em;
+  color: goldenrod;  
+  size: 14px;
 }
 ::-webkit-scrollbar{
     width: 0.1px;
