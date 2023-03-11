@@ -64,16 +64,20 @@ public class Methods {
         while (true) {
             // Mostramos las acciones disponibles del menu
             Interface.Interface.menuMain();
-            // Recogemos la opcion marcada por el
-            sc = new Scanner(System.in);            
+            // Recogemos la opcion marcada por el usuario
+            sc = new Scanner(System.in); 
+            // Trabajamos los datos del grafo antes de sacar los resultados
+            // Creamos una lista de los vertices existentes
             List<Vertex<DecoratedElement<Personaje>>> vertices = crearListaVertices(grafo.getVertices());
+            // Generamos una lista con las aristas existentes
             Collections.sort(vertices, ((a , b) -> crearListaAristas(grafo.incidentEdges(b)).size() - crearListaAristas ( grafo.incidentEdges(a)).size()));
+            // Opciones disponibles, con las que podemos trabajar
             switch (sc.nextInt()) {
-                case 1 -> cantidadPersonajes(grafo);
-                case 2 -> caminoEncontrado(grafo);
-                case 3 -> crearEquipo(grafo);
-                case 4 -> menuFinal();
-                default -> opcionNoExiste();
+                case 1 -> cantidadPersonajes(grafo, vertices); // nº de personajes totales del grafo
+                case 2 -> caminoEncontrado(grafo, vertices); // camino entre dos personajes
+                case 3 -> crearEquipo(grafo, vertices, Vertex<DecoratedElement<Personaje>> inicio, Vertex<DecoratedElement<Personaje>> fin); // generamos un equipo entre dos personajes
+                case 4 -> menuFinal(); // fin del programa
+                default -> opcionNoExiste(); // opcion escrita, no existe en el programa
             }
         }
     }
@@ -98,7 +102,7 @@ public class Methods {
      * @param vertices
      * @param grafo 
      */
-    private static void caminoEncontrado(List vertices, Graph grafo) {
+    private static void caminoEncontrado(Graph grafo, List vertices) {
         for ( Vertex<DecoratedElement<Personaje>> vertex : vertices ) {
             System.out.println(vertex.getID());
         }
