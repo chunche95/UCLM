@@ -43,9 +43,9 @@ public class Methods {
                 linea = lector.nextLine();
                 String[] splitted = linea.split(SEPARADOR);
                 grafoResultante.insertEdge(
-                        new DecoratedElement<Personaje>(new Personaje(splitted[0]))), 
+                        new DecoratedElement<Personaje>(new Personaje(splitted[0])), 
                         new DecoratedElement<Personaje>(new Personaje(splitted[1])), 
-                        Integer.valueOf(splitted[2]));                        
+                        Integer.valueOf(splitted[2]));
             } while (lector.hasNext());
             lector.close();
             return grafoResultante;
@@ -62,7 +62,9 @@ public class Methods {
      */
     public static void Menu( Graph<DecoratedElement<Personaje>, Integer> grafo) {
         while (true) {
+            // Mostramos las acciones disponibles del menu
             Interface.Interface.menuMain();
+            // Recogemos la opcion marcada por el
             sc = new Scanner(System.in);            
             List<Vertex<DecoratedElement<Personaje>>> vertices = crearListaVertices(grafo.getVertices());
             Collections.sort(vertices, ((a , b) -> crearListaAristas(grafo.incidentEdges(b)).size() - crearListaAristas ( grafo.incidentEdges(a)).size()));

@@ -30,14 +30,16 @@ public interface Interface {
                    2. Imprimir el camino más corto entre dos personajes.
                    3. Diseñar el GREAT TEAMS de los personajes de Marvel.
 
-                    0. Salir del programa."
+                   0. Salir del programa."
 
                    ·······················································
                                         Seleccione una opción: """;        
+    
     static final String FINPROGRAMA = """
                                      Gracias por usar MARVEL EN LA UCLM. 
                                       Y recuerda! 
                                      \t Wakanda forever. - Black Panther.""";
+    
     static final String OPCION_NO_EXISTE = """
                     '''''''''''''''''''''''''''''''''''''''''''''''''''''''
                     '                       Warning!!!!!!!!               '
