@@ -37,20 +37,20 @@ public class Methods {
     public static Graph<DecoratedElement<Personaje>, Integer> CargarDatos() {
         Graph<DecoratedElement<Personaje>, Integer> grafoResultante = new TreeMapGraph<DecoratedElement<Personaje>, Integer>();
         try {
-            Scanner lector = new Scanner(new File(FICHEROCSV));
-            String linea = lector.nextLine();
+            Scanner sc = new Scanner(new File(FICHEROCSV));
+            String linea = sc.nextLine();
             do {
-                linea = lector.nextLine();
+                linea = sc.nextLine();
                 String[] splitted = linea.split(SEPARADOR);
                 grafoResultante.insertEdge(
                         new DecoratedElement<Personaje>(new Personaje(splitted[0])), 
                         new DecoratedElement<Personaje>(new Personaje(splitted[1])), 
                         Integer.valueOf(splitted[2]));
-            } while (lector.hasNext());
-            lector.close();
+            } while (sc.hasNextLine());
+            sc.close();
             return grafoResultante;
         } catch (IOException ex) {
-            System.out.println(ex);
+            System.out.println(ex.getLocalizedMessage());
             System.exit(1);
             return null;
         }
@@ -67,15 +67,20 @@ public class Methods {
             // Recogemos la opcion marcada por el usuario
             sc = new Scanner(System.in); 
             // Trabajamos los datos del grafo antes de sacar los resultados
+            //------------------------------------------------------------------------------
             // Creamos una lista de los vertices existentes
             List<Vertex<DecoratedElement<Personaje>>> vertices = crearListaVertices(grafo.getVertices());
             // Generamos una lista con las aristas existentes
             Collections.sort(vertices, ((a , b) -> crearListaAristas(grafo.incidentEdges(b)).size() - crearListaAristas ( grafo.incidentEdges(a)).size()));
+            //
+            Vertex<DecoratedElement<Personaje>> inicio = null;
+            Vertex<DecoratedElement<Personaje>> fin = null;
+            //------------------------------------------------------------------------------            
             // Opciones disponibles, con las que podemos trabajar
             switch (sc.nextInt()) {
                 case 1 -> cantidadPersonajes(grafo, vertices); // nº de personajes totales del grafo
                 case 2 -> caminoEncontrado(grafo, vertices); // camino entre dos personajes
-                case 3 -> crearEquipo(grafo, vertices, Vertex<DecoratedElement<Personaje>> inicio, Vertex<DecoratedElement<Personaje>> fin); // generamos un equipo entre dos personajes
+                case 3 -> crearEquipo(grafo, vertices, inicio, fin); // generamos un equipo entre dos personajes
                 case 4 -> menuFinal(); // fin del programa
                 default -> opcionNoExiste(); // opcion escrita, no existe en el programa
             }
@@ -102,7 +107,7 @@ public class Methods {
      * @param vertices
      * @param grafo 
      */
-    private static void caminoEncontrado(Graph grafo, List vertices) {
+    private static void caminoEncontrado(Graph grafo, List<Vertex<DecoratedElement<Personaje>>> vertices) {
         for ( Vertex<DecoratedElement<Personaje>> vertex : vertices ) {
             System.out.println(vertex.getID());
         }
@@ -124,7 +129,7 @@ public class Methods {
      * @param inicio
      * @param fin 
      */
-    private static void crearEquipo(Graph grafo, List vertices, Vertex<DecoratedElement<Personaje>> inicio, Vertex<DecoratedElement<Personaje>> fin) {
+    private static void crearEquipo(Graph grafo, List<Vertex<DecoratedElement<Personaje>>> vertices, Vertex<DecoratedElement<Personaje>> inicio, Vertex<DecoratedElement<Personaje>> fin) {
         vertices.forEach(a -> System.out.println(a.getID()) );
         sc.nextLine();
         inicio = obtenerPersonaje(vertices, sc);
@@ -145,14 +150,31 @@ public class Methods {
     private static void mostrarMayor(List<Vertex<DecoratedElement<Personaje>>> personajesMarvel, Graph<DecoratedElement<Personaje>, Integer> grafo) {
         try {
             System.out.printf("El personaje con mayor número de relaciones es: %s \n", personajesMarvel.get(0).getID());
-            for (int i = 0; i < personajesMarvel.size(); i++) {
+            for (int i = 1 ; i < personajesMarvel.size() - 1 ; i++) {
                 if ( crearListaAristas(grafo.incidentEdges(personajesMarvel.get(i))).size() == crearListaAristas(grafo.incidentEdges(personajesMarvel.get(0))).size() ) {
                     System.out.println("El personaje con mayor número de relaciones es: " + personajesMarvel.get(i).getID());
                 }
             }
         } catch (NoSuchElementException e) {
-            System.out.println("No hay elementos en el grafo.");
-        }            
+            System.out.println("Grafo sin datos!!! - No se han encontrado elementos en el grafo. \n" + e);
+        }
+    }
+    /**
+     * 
+     * @param personajesMarvel
+     * @param grafo 
+     */
+    private static void mostrarMenor(List<Vertex<DecoratedElement<Personaje>>> personajesMarvel, Graph<DecoratedElement<Personaje>, Integer> grafo) {
+        try {
+            System.out.printf("El personaje con menor número de relaciones es: %s \n", personajesMarvel.get(personajesMarvel.size()-1).getID());
+            for (int i = personajesMarvel.size()-2 ; i >= 0 ; i--) {
+                if ( crearListaAristas(grafo.incidentEdges(personajesMarvel.get(i))).size() == crearListaAristas(grafo.incidentEdges(personajesMarvel.get(personajesMarvel.size() -1 ))).size() ) {
+                    System.out.println("El personaje con menor número de relaciones es: " +  personajesMarvel.get(i).getID());
+                }
+            }
+        } catch ( NoSuchElementException e ) {
+            System.out.println("Grafo sin datos!!! - No se han encontrado elementos en el grafo. \n" + e);
+        }
     }
     /**
      * 
@@ -173,8 +195,7 @@ public class Methods {
             }
             return obtenerPersonaje(personajes, scanner);
         }
-    }
-    
+    }  
     /**
      * 
      * @param graph
@@ -203,23 +224,19 @@ public class Methods {
             }
         } while (fin.getElement().getParent() == null && !queue.isEmpty() &&  !acabar);
         return acabar;
-    }
-    
+    }    
     /**
      * 
      * @param Integer
      * @return 
      */
-    private static Vertex<DecoratedElement<Personaje>> equipoVertices ( 
-            Graph<DecoratedElement<Personaje> Integer> graph, 
-            Vertex<DecoratedElement<Personaje>> inicio, 
-            Vertex<DecoratedElement<Personaje>> fin) {
+    private static Vertex<DecoratedElement<Personaje>> equipoVertices (  Graph<DecoratedElement<Personaje>, Integer> graph, Vertex<DecoratedElement<Personaje>> inicio, Vertex<DecoratedElement<Personaje>> fin) {
         Edge<Integer> e = null;
         inicio.getElement().setVisited(true);
         Iterator<Edge<Integer>> it = graph.incidentEdges(inicio);
         Vertex<DecoratedElement<Personaje>> nodoAux = null;
         while ( it.hasNext() && !(inicio.equals(fin))) {
-            e = it.next()
+            e = it.next();
             nodoAux = graph.opposite(inicio, e);
             if ( !nodoAux.getElement().isVisited() && e.getElement() < 10 ) {
                 nodoAux.getElement().setParent(inicio.getElement());
@@ -227,8 +244,7 @@ public class Methods {
             }
         }
         return inicio;
-    }
-    
+    }    
     /**
      * 
      * @param personaje 
@@ -238,33 +254,35 @@ public class Methods {
             System.out.println(personaje.getID() + " -> ");
             personaje = personaje.getParent();
         }
-    }
-    
+    }    
     /**
      * 
      * @param iterator
      * @return 
      */
     private static List<Vertex<DecoratedElement<Personaje>>> crearListaVertices ( Iterator<Vertex<DecoratedElement<Personaje>>> iterator ) {
-        List <VertexDecoratedElement<Personaje>>> list = new ArrayList<>();
+        List<Vertex<DecoratedElement<Personaje>>> list = new ArrayList<>();
         while (iterator.hasNext()) {
             list.add(iterator.next());
         }
         return list;
-    }
-    
+    }    
     /**
      * 
      * @param iterator
      * @return 
      */
     private static List<Edge<Integer>> crearListaAristas (Iterator<Edge<Integer>> iterator) {
-        List<Edge<Iterator>> list = new ArrayList();
+        List<Edge<Integer>> list = new ArrayList<>();
         while (iterator.hasNext()) {
             list.add(iterator.next());
         }
         return list;
-    }
+    }   
+    /**
+     * 
+     * @return 
+     * 
     
     private static Graph<DecoratedElement<Personaje>, Integer> cargarDatosPruebas() {
         Graph<DecoratedElement<Personaje>, Integer> grafo = new TreeMapGraph<DecoratedElement<Personaje>, Integer()>;
@@ -283,6 +301,8 @@ public class Methods {
         grafo.insertEdge(new DecoratedElement<Personaje>(personajes[8]), new DecoratedElement<Personaje>(personajes[8]), 32);
         return grafo;
     }
+    */
+    
     
     /* ***************************************** */
     /* OPCIONES FINALES DEL PROGRAMA & MENSAJES  */

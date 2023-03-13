@@ -13,7 +13,7 @@ package Interface;
  */
 public interface Interface {
     String username = System.getProperty ("user.name");
-    public static String FICHEROCSV = "marvel.csv";
+    public static String FICHEROCSV = "src/main/java/Interface/marvel.csv";
     public static String SEPARADOR = ";"; // ",(?=([^\\\"]*\\\"[^\\\"]*\\\")*[^\\\"]*$)\";
     
     /*
