@@ -282,13 +282,13 @@ public class Methods {
     /**
      * 
      * @return 
-     * 
+     */
     
     private static Graph<DecoratedElement<Personaje>, Integer> cargarDatosPruebas() {
-        Graph<DecoratedElement<Personaje>, Integer> grafo = new TreeMapGraph<DecoratedElement<Personaje>, Integer()>;
+        Graph<DecoratedElement<Personaje>, Integer> grafo = new TreeMapGraph<DecoratedElement<Personaje>, Integer>();
         Personaje[] personajes = new Personaje[10];
         for (int i = 0; i < 10; i++) {
-            personajes[i] = new Persoanje(" " + (char) ('a' + i));
+            personajes[i] = new Personaje(" " + (char) ('a' + i));
         }
         grafo.insertEdge(new DecoratedElement<Personaje>(personajes[0]), new DecoratedElement<Personaje>(personajes[1]), 2);
         grafo.insertEdge(new DecoratedElement<Personaje>(personajes[0]), new DecoratedElement<Personaje>(personajes[2]), 8);
@@ -301,7 +301,7 @@ public class Methods {
         grafo.insertEdge(new DecoratedElement<Personaje>(personajes[8]), new DecoratedElement<Personaje>(personajes[8]), 32);
         return grafo;
     }
-    */
+    
     
     
     /* ***************************************** */
