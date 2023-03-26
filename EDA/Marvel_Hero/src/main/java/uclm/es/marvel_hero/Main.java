@@ -32,6 +32,7 @@ import DomainModel.DecoratedElement;
 import static DomainModel.Methods.CargarDatos;
 import DomainModel.Personaje;
 import Interface.Interface;
+import graphsDSESIUCLM.*;
 
 /**
  * @versiono 0.1.2
@@ -40,7 +41,7 @@ import Interface.Interface;
 public class Main {
     public static void main(String[] args) {
         // Cargamos los datos del CSV a nuestro grafo de Personajes de Marvel.
-        graphsDSESIUCLM.Graph <DecoratedElement<Personaje> , Integer> grafo = CargarDatos();
+        Graph <DecoratedElement<Personaje> , Integer> grafo = CargarDatos();
         // Lanzamos el menu de opciones del programa.
         Interface.menuMain();
         // Obtenemos la opción seleccionada y la devolvemos a las operaciones disponibles.

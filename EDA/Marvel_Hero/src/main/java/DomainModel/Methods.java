@@ -21,30 +21,30 @@ import java.io.*;
 import java.util.*;
 
 /**
- * @version 0.2.1
+ * @version 0.2.2
  * @author Paulino Esteban Bermúdez Rodríguez | humancomputing.net
  */
 public class Methods {
     private static Scanner sc;
     
-    /**
+    /** *********************************
      * Principales Métodos de operaciones 
-     */
+     ************************************ */
     /**
      * Cargamos los datos del CSV en el grafo llamado CargarDatos 
      * @return devuelve el grafo con los datos
      */
     public static Graph<DecoratedElement<Personaje>, Integer> CargarDatos() {
-        Graph<DecoratedElement<Personaje>, Integer> grafoResultante = new TreeMapGraph<DecoratedElement<Personaje>, Integer>();
+        Graph<DecoratedElement<Personaje>, Integer> grafoResultante = new TreeMapGraph<>();
         try {
-            Scanner sc = new Scanner(new File(FICHEROCSV));
+            sc = new Scanner(new File(FICHEROCSV));
             String linea = sc.nextLine();
             do {
                 linea = sc.nextLine();
                 String[] splitted = linea.split(SEPARADOR);
                 grafoResultante.insertEdge(
-                        new DecoratedElement<Personaje>(new Personaje(splitted[0])), 
-                        new DecoratedElement<Personaje>(new Personaje(splitted[1])), 
+                        new DecoratedElement<>(new Personaje(splitted[0])), 
+                        new DecoratedElement<>(new Personaje(splitted[1])), 
                         Integer.valueOf(splitted[2]));
             } while (sc.hasNextLine());
             sc.close();
@@ -96,7 +96,7 @@ public class Methods {
      * @param grafo
      * @param vertices 
      */
-    private static void cantidadPersonajes(Graph grafo, List vertices) {
+    private static void cantidadPersonajes(Graph grafo, List<Vertex<DecoratedElement<Personaje>>> vertices) {
         System.out.println("Cantidad de personajes: "+grafo.getN());
         System.out.println("Cantidad de relaciones: "+grafo.getM());
         mostrarMayor(vertices, grafo);
@@ -204,7 +204,7 @@ public class Methods {
      * @return 
      */
     private static boolean realizarCamino(Graph<DecoratedElement<Personaje>, Integer> graph, Vertex<DecoratedElement<Personaje>> inicio, Vertex<DecoratedElement<Personaje>> fin ) {
-        LinkedList<Vertex<DecoratedElement<Personaje>>> queue = new LinkedList<Vertex<DecoratedElement<Personaje>>>();
+        LinkedList<Vertex<DecoratedElement<Personaje>>> queue = new LinkedList<>();
         queue.add(inicio);
         boolean acabar = false;
         do {
@@ -228,7 +228,7 @@ public class Methods {
     /**
      * 
      * @param Integer
-     * @return 
+     * @return inicio
      */
     private static Vertex<DecoratedElement<Personaje>> equipoVertices (  Graph<DecoratedElement<Personaje>, Integer> graph, Vertex<DecoratedElement<Personaje>> inicio, Vertex<DecoratedElement<Personaje>> fin) {
         Edge<Integer> e = null;
@@ -258,7 +258,7 @@ public class Methods {
     /**
      * 
      * @param iterator
-     * @return 
+     * @return list
      */
     private static List<Vertex<DecoratedElement<Personaje>>> crearListaVertices ( Iterator<Vertex<DecoratedElement<Personaje>>> iterator ) {
         List<Vertex<DecoratedElement<Personaje>>> list = new ArrayList<>();
@@ -270,7 +270,7 @@ public class Methods {
     /**
      * 
      * @param iterator
-     * @return 
+     * @return list
      */
     private static List<Edge<Integer>> crearListaAristas (Iterator<Edge<Integer>> iterator) {
         List<Edge<Integer>> list = new ArrayList<>();
@@ -284,7 +284,7 @@ public class Methods {
      * @return 
      */
     
-    private static Graph<DecoratedElement<Personaje>, Integer> cargarDatosPruebas() {
+    /*private static Graph<DecoratedElement<Personaje>, Integer> cargarDatosPruebas() {
         Graph<DecoratedElement<Personaje>, Integer> grafo = new TreeMapGraph<DecoratedElement<Personaje>, Integer>();
         Personaje[] personajes = new Personaje[10];
         for (int i = 0; i < 10; i++) {
@@ -301,7 +301,7 @@ public class Methods {
         grafo.insertEdge(new DecoratedElement<Personaje>(personajes[8]), new DecoratedElement<Personaje>(personajes[8]), 32);
         return grafo;
     }
-    
+    */
     
     
     /* ***************************************** */
