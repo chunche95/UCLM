@@ -38,16 +38,16 @@ public class Methods {
         Graph<DecoratedElement<Personaje>, Integer> grafoResultante = new TreeMapGraph<>();
         try {
             sc = new Scanner(new File(FICHEROCSV));
-            String linea = sc.nextLine();
-            do {
+            String linea = sc.nextLine();            
+            do {                
                 linea = sc.nextLine();
                 String[] splitted = linea.split(SEPARADOR);
                 grafoResultante.insertEdge(
                         new DecoratedElement<>(new Personaje(splitted[0])), 
                         new DecoratedElement<>(new Personaje(splitted[1])), 
-                        Integer.valueOf(splitted[2]));
+                        Integer.valueOf(splitted[2]));                
             } while (sc.hasNextLine());
-            sc.close();
+            sc.close();            
             return grafoResultante;
         } catch (IOException ex) {
             System.out.println(ex.getLocalizedMessage());
@@ -55,15 +55,30 @@ public class Methods {
             return null;
         }
     }    
+    /*
+     * Mostramos los datos almacenados en el Grafo
+     */
+    public static void datosAlmacenados() {
+        Graph<DecoratedElement<Personaje>, Integer> grafo = CargarDatos();
+        Iterator<Vertex<DecoratedElement<Personaje>>> iter = grafo.getVertices();
+
+        while (iter.hasNext()) {
+            Vertex<DecoratedElement<Personaje>> vertex = iter.next();
+            DecoratedElement<Personaje> element = vertex.getElement();
+            System.out.println(element.getElement().getID());
+        }
+
+    }
+
     /**
      * Menu Principal del programa.
      * Muestra las opciones disponibles del programa y trabaja con ellos a partir de los datos de entrada.
      * @param grafo 
      */
-    public static void Menu( Graph<DecoratedElement<Personaje>, Integer> grafo) {
+    public static void MenuOperaciones( Graph<DecoratedElement<Personaje>, Integer> grafo) {
         while (true) {
             // Mostramos las acciones disponibles del menu
-            Interface.Interface.menuMain();
+            Interface.Interface.MENU_MAIN();
             // Recogemos la opcion marcada por el usuario
             sc = new Scanner(System.in); 
             // Trabajamos los datos del grafo antes de sacar los resultados
@@ -78,11 +93,20 @@ public class Methods {
             //------------------------------------------------------------------------------            
             // Opciones disponibles, con las que podemos trabajar
             switch (sc.nextInt()) {
-                case 1 -> cantidadPersonajes(grafo, vertices); // nº de personajes totales del grafo
-                case 2 -> caminoEncontrado(grafo, vertices); // camino entre dos personajes
-                case 3 -> crearEquipo(grafo, vertices, inicio, fin); // generamos un equipo entre dos personajes
-                case 4 -> menuFinal(); // fin del programa
-                default -> opcionNoExiste(); // opcion escrita, no existe en el programa
+                case 1:
+                    OPCION_UNO();
+                    cantidadPersonajes(grafo, vertices); // nº de personajes totales del grafo
+                    break;
+                case 2:
+                    OPCION_DOS();
+                    caminoEncontrado(grafo, vertices); // camino entre dos personajes
+                case 3:
+                    OPCION_TRES();
+                    crearEquipo(grafo, vertices, inicio, fin); // generamos un equipo entre dos personajes
+                case 4:
+                    menuFinal(); // fin del programa
+                default:
+                    opcionNoExiste(); // opcion escrita, no existe en el programa
             }
         }
     }
