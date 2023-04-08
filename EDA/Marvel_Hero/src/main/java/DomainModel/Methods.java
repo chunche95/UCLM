@@ -36,16 +36,17 @@ public class Methods {
      */
     public static Graph<DecoratedElement<Personaje>, Integer> CargarDatos() {
         Graph<DecoratedElement<Personaje>, Integer> grafoResultante = new TreeMapGraph<>();
+        String linea;
         try {
             sc = new Scanner(new File(FICHEROCSV));
-            String linea = sc.nextLine();            
+             // = sc.nextLine();            
             do {                
                 linea = sc.nextLine();
                 String[] splitted = linea.split(SEPARADOR);
                 grafoResultante.insertEdge(
                         new DecoratedElement<>(new Personaje(splitted[0])), 
                         new DecoratedElement<>(new Personaje(splitted[1])), 
-                        Integer.valueOf(splitted[2]));                
+                        Integer.valueOf(splitted[2]));
             } while (sc.hasNextLine());
             sc.close();            
             return grafoResultante;
