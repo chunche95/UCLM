@@ -55,20 +55,19 @@ public class Methods {
             return null;
         }
     }    
-    /*
+    /**
      * Mostramos los datos almacenados en el Grafo
      */
-    public static void datosAlmacenados() {
-        Graph<DecoratedElement<Personaje>, Integer> grafo = CargarDatos();
-        Iterator<Vertex<DecoratedElement<Personaje>>> iter = grafo.getVertices();
-
-        while (iter.hasNext()) {
-            Vertex<DecoratedElement<Personaje>> vertex = iter.next();
-            DecoratedElement<Personaje> element = vertex.getElement();
-            System.out.println(element.getElement().getID());
-        }
-
-    }
+     // public static void datosAlmacenados() {
+     // Graph<DecoratedElement<Personaje>, Integer> grafo = CargarDatos();
+     // Iterator<Vertex<DecoratedElement<Personaje>>> iter = grafo.getVertices();
+     //
+     // while (iter.hasNext()) { Vertex<DecoratedElement<Personaje>> vertex =
+     // iter.next(); DecoratedElement<Personaje> element = vertex.getElement();
+     // System.out.println(element.getElement().getID()); }
+     //
+     // }
+     
 
     /**
      * Menu Principal del programa.
@@ -93,20 +92,23 @@ public class Methods {
             //------------------------------------------------------------------------------            
             // Opciones disponibles, con las que podemos trabajar
             switch (sc.nextInt()) {
-                case 1:
+                case 1 -> {
                     OPCION_UNO();
                     cantidadPersonajes(grafo, vertices); // nº de personajes totales del grafo
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     OPCION_DOS();
                     caminoEncontrado(grafo, vertices); // camino entre dos personajes
-                case 3:
+                }
+                case 3 -> {
                     OPCION_TRES();
                     crearEquipo(grafo, vertices, inicio, fin); // generamos un equipo entre dos personajes
-                case 4:
-                    menuFinal(); // fin del programa
-                default:
-                    opcionNoExiste(); // opcion escrita, no existe en el programa
+                }
+                case 0 -> {
+                    OPCION_FIN_PROGRAMA(); // fin del programa
+                    System.exit(0);
+                }
+                default -> OPCION_NO_EXISTE(); // opcion escrita, no existe en el programa
             }
         }
     }
@@ -154,7 +156,7 @@ public class Methods {
      * @param fin 
      */
     private static void crearEquipo(Graph grafo, List<Vertex<DecoratedElement<Personaje>>> vertices, Vertex<DecoratedElement<Personaje>> inicio, Vertex<DecoratedElement<Personaje>> fin) {
-        vertices.forEach(a -> System.out.println(a.getID()) );
+        vertices.forEach(a -> System.out.println(a.getID()) );        
         sc.nextLine();
         inicio = obtenerPersonaje(vertices, sc);
         fin = obtenerPersonaje(vertices, sc);
@@ -164,10 +166,10 @@ public class Methods {
             System.out.println(fin.getID());
         } else {
             System.out.printf("No se ha encontrado equipo para %s y %s ", inicio.getID(), fin.getID());
-        }
+        }        
     }
     /**
-     * 
+     * Muestra el personaje con mayor numero de interacciones
      * @param personajesMarvel
      * @param grafo 
      */
@@ -184,7 +186,7 @@ public class Methods {
         }
     }
     /**
-     * 
+     * Muestra el personaje con menor numero de interacciones
      * @param personajesMarvel
      * @param grafo 
      */
@@ -201,17 +203,18 @@ public class Methods {
         }
     }
     /**
-     * 
+     * Metodo que busca el camino entre dos personajes y devuelve el camino entre el personaje introducido y la lista disponible
      * @param personajes
      * @param scanner
-     * @return 
+     * @return obtenerPersonaje
      */
     private static Vertex<DecoratedElement<Personaje>> obtenerPersonaje ( List<Vertex<DecoratedElement<Personaje>>> personajes, Scanner scanner ) {
-        System.out.println("Escriba el nombre del personaje: ");
+        
+        System.out.println(SOLICITAR_PERSONAJE);
         String nombre  = sc.nextLine();
         if (nombre.equals("")) {            
             return obtenerPersonaje(personajes, scanner);
-        } else {
+        } else  {
             for ( Vertex<DecoratedElement<Personaje>> vertex : personajes ) {
                 if ( vertex.getID().equals(nombre) ) {
                     return vertex;
@@ -221,11 +224,11 @@ public class Methods {
         }
     }  
     /**
-     * 
+     * Metodo que realiza el camino entre dos personajes del grafo. Y finaliza al encontrar el camino.
      * @param graph
      * @param inicio
      * @param fin
-     * @return 
+     * @return acabar
      */
     private static boolean realizarCamino(Graph<DecoratedElement<Personaje>, Integer> graph, Vertex<DecoratedElement<Personaje>> inicio, Vertex<DecoratedElement<Personaje>> fin ) {
         LinkedList<Vertex<DecoratedElement<Personaje>>> queue = new LinkedList<>();
@@ -250,7 +253,7 @@ public class Methods {
         return acabar;
     }    
     /**
-     * 
+     * Devuelve el grupo de 10 super heroes Marvel
      * @param Integer
      * @return inicio
      */
@@ -270,7 +273,7 @@ public class Methods {
         return inicio;
     }    
     /**
-     * 
+     * Recorre el grafo buscando a su nodo padre
      * @param personaje 
      */
     private static void recorrerCamino(DecoratedElement<Personaje> personaje ) {
@@ -280,7 +283,7 @@ public class Methods {
         }
     }    
     /**
-     * 
+     * Crea una lista de vertices del grafo creado.
      * @param iterator
      * @return list
      */
@@ -292,7 +295,7 @@ public class Methods {
         return list;
     }    
     /**
-     * 
+     * Crea una lista de aristas del grafo creado
      * @param iterator
      * @return list
      */
@@ -303,41 +306,5 @@ public class Methods {
         }
         return list;
     }   
-    /**
-     * 
-     * @return 
-     */
-    
-    /*private static Graph<DecoratedElement<Personaje>, Integer> cargarDatosPruebas() {
-        Graph<DecoratedElement<Personaje>, Integer> grafo = new TreeMapGraph<DecoratedElement<Personaje>, Integer>();
-        Personaje[] personajes = new Personaje[10];
-        for (int i = 0; i < 10; i++) {
-            personajes[i] = new Personaje(" " + (char) ('a' + i));
-        }
-        grafo.insertEdge(new DecoratedElement<Personaje>(personajes[0]), new DecoratedElement<Personaje>(personajes[1]), 2);
-        grafo.insertEdge(new DecoratedElement<Personaje>(personajes[0]), new DecoratedElement<Personaje>(personajes[2]), 8);
-        grafo.insertEdge(new DecoratedElement<Personaje>(personajes[0]), new DecoratedElement<Personaje>(personajes[4]), 12);
-        grafo.insertEdge(new DecoratedElement<Personaje>(personajes[2]), new DecoratedElement<Personaje>(personajes[3]), 24);
-        grafo.insertEdge(new DecoratedElement<Personaje>(personajes[4]), new DecoratedElement<Personaje>(personajes[5]), 6);
-        grafo.insertEdge(new DecoratedElement<Personaje>(personajes[5]), new DecoratedElement<Personaje>(personajes[5]), 4);
-        grafo.insertEdge(new DecoratedElement<Personaje>(personajes[6]), new DecoratedElement<Personaje>(personajes[6]), 3);
-        grafo.insertEdge(new DecoratedElement<Personaje>(personajes[6]), new DecoratedElement<Personaje>(personajes[7]), 5);
-        grafo.insertEdge(new DecoratedElement<Personaje>(personajes[8]), new DecoratedElement<Personaje>(personajes[8]), 32);
-        return grafo;
-    }
-    */
-    
-    
-    /* ***************************************** */
-    /* OPCIONES FINALES DEL PROGRAMA & MENSAJES  */
-    /* ***************************************** */  
-    /**
-     * Mensaje fin del programa.
-     */
-    private static void menuFinal() { System.out.println(FINPROGRAMA); sc.close();}    
-    /**
-     * Mensaje de control para una opción no existente.
-     */
-    private static void opcionNoExiste() { System.out.println(OPCION_NO_EXISTE); }
     
 }
