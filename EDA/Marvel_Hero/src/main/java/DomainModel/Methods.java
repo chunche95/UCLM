@@ -232,10 +232,15 @@ public class Methods {
      */
     private static boolean realizarCamino(Graph<DecoratedElement<Personaje>, Integer> graph, Vertex<DecoratedElement<Personaje>> inicio, Vertex<DecoratedElement<Personaje>> fin ) {
         LinkedList<Vertex<DecoratedElement<Personaje>>> queue = new LinkedList<>();
+        Set<Vertex<DecoratedElement<Personaje>>> visitados = new HashSet<>(); // conjunto de nodos visitados
         queue.add(inicio);
         boolean acabar = false;
         do {
             Vertex<DecoratedElement<Personaje>> v = queue.poll();
+            if (visitados.contains(v)) { // Si ya se visitó este nodo, pasa al siguiente.
+                continue;
+            }
+            visitados.add(v); // Agregar el nodo actual al conjunto de visitados
             Iterator<Edge<Integer>> vertices = graph.incidentEdges(v);
             while( vertices.hasNext()  && !acabar ) {
                 Vertex<DecoratedElement<Personaje>> adVertex = graph.opposite(v, vertices.next());
@@ -281,6 +286,7 @@ public class Methods {
             System.out.println(personaje.getID() + " -> ");
             personaje = personaje.getParent();
         }
+        System.out.println(personaje.getID()); // Imprime el último personaje del camino
     }    
     /**
      * Crea una lista de vertices del grafo creado.
