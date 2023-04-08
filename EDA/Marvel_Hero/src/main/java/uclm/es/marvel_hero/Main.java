@@ -28,10 +28,10 @@
  */
 package uclm.es.marvel_hero;
 
-import DomainModel.DecoratedElement;
 import static DomainModel.Methods.CargarDatos;
+import static DomainModel.Methods.MenuOperaciones;
+import DomainModel.DecoratedElement;
 import DomainModel.Personaje;
-import Interface.Interface;
 import graphsDSESIUCLM.*;
 
 /**
@@ -40,11 +40,15 @@ import graphsDSESIUCLM.*;
  */
 public class Main {
     public static void main(String[] args) {
-        // Cargamos los datos del CSV a nuestro grafo de Personajes de Marvel.
+        /* **********************************************************************
+         * Cargamos los datos del CSV a nuestro grafo de Personajes de Marvel.
+         ********************************************************************** */
         Graph <DecoratedElement<Personaje> , Integer> grafo = CargarDatos();
-        // Lanzamos el menu de opciones del programa.
-        Interface.menuMain();
-        // Obtenemos la opción seleccionada y la devolvemos a las operaciones disponibles.
         
+        //System.out.println("Proceso de carga de datos - Hecho!");        
+        // datosAlmacenados(); // --> Imprimo los datos que almaceno en el grafo.
+        
+        // Lanzamos el menu de opciones del programa & realizamos las operaciones 
+        MenuOperaciones(grafo);
     }
 }
