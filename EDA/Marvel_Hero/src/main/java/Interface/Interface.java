@@ -14,7 +14,7 @@ package Interface;
 public interface Interface {
     String username = System.getProperty ("user.name");
     public static String FICHEROCSV = "src/main/java/Interface/marvel.csv";
-    public static String SEPARADOR = ";"; // ",(?=([^\\\"]*\\\"[^\\\"]*\\\")*[^\\\"]*$)\";
+    public static String SEPARADOR = ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)";
     
     /*
      * Mensajes del programa.
@@ -24,14 +24,13 @@ public interface Interface {
                     ············· MENU PRINCIPAL - MARVEL HEROS ···········
                     ·······················································
 
-                   Hola username , puedes: 
-                   __________
+                   Hola! Opciones: 
+                   ________________________________________________________
                    1. Ver grafo con personajes + sociales & - sociables.
                    2. Imprimir el camino más corto entre dos personajes.
                    3. Diseñar el GREAT TEAMS de los personajes de Marvel.
-
+                   ________________________________________________________
                    0. Salir del programa."
-
                    ·······················································
                                         Seleccione una opción: """;        
     
