@@ -12,6 +12,11 @@ package Interface;
  * @author Paulino Esteban Bermúdez Rodríguez | humancomputing.net
  */
 public interface Interface {
+    
+    /* ************************** */
+    /*   VARIABLES DEL PROGRAMA.  */
+    /* ************************** */
+    
     /**
      * Variables necesarias del programa.
      * FICHEROCSV Fichero CSV que contiene los datos con los que trabaja el programa 
@@ -20,12 +25,20 @@ public interface Interface {
     public static String FICHEROCSV = "src/main/java/Interface/marvel.csv";
     public static String SEPARADOR = ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)";
     
+    /* ****************************************** */
+    /*  MENSAJES DE LOS DIALOGOS DEL PROGRAMA.    */
+    /* ****************************************** */
+    
     /**
      * Mensajes del programa.
      * Contiene:
      * - MENUPRINCIPAL
+     * - SOLICITAR_PERSONAJE
      * - FINPROGRAMA
      * - OPCION_NO_EXISTE
+     * - OPCION_1
+     * - OPCION_2
+     * - OPCION_3
      */
     static final String MENUPRINCIPAL = """
                     ·······················································
@@ -42,12 +55,14 @@ public interface Interface {
                    ·······················································
                                         Seleccione una opción: """;        
     
+    static final String SOLICITAR_PERSONAJE = "Escriba el nombre del personaje: ";
+    
     static final String FINPROGRAMA = """
-                                     Gracias por usar MARVEL EN LA UCLM. \n
+                                     Gracias por usar MARVEL Graph EN LA UCLM. \n
                                       Y recuerda! \n
                                      \t Wakanda forever. - Black Panther.""";
     
-    static final String OPCION_NO_EXISTE = """
+    static final String OPCION_NO_VALIDA = """
                     '''''''''''''''''''''''''''''''''''''''''''''''''''''''\n
                     '                       Warning!!!!!!!!               '\n
                     '''''''''''''''''''''''''''''''''''''''''''''''''''''''\n
@@ -65,14 +80,24 @@ public interface Interface {
                                    OPCION 3. Diseñar el mejor equipo entre dos personajes datos. \n\n
                                    \t Obteniendo datos: \n
                                    """;
+        
+    /* ***************************************** */
+    /* OPCIONES FINALES DEL PROGRAMA & MENSAJES  */
+    /* ***************************************** */  
+        
     /**
      * Métodos de llamada a los mensajes.
      * - MENU_MAIN
      * - OPCION_UNO
-     */
+     * - OPCION_DOS
+     * - OPCION_TRES
+     * - OPCION_FIN_PROGRAMA
+     * - OPCION_NO_EXISTE
+     */    
     public static void MENU_MAIN(){ System.out.println(MENUPRINCIPAL);}
     public static void OPCION_UNO(){ System.out.println(OPCION_1); }
     public static void OPCION_DOS(){ System.out.println(OPCION_2);}
-    public static void OPCION_(){ System.out.println(OPCION_3);}
-    
+    public static void OPCION_TRES(){ System.out.println(OPCION_3);}
+    public static void OPCION_FIN_PROGRAMA() { System.out.println(FINPROGRAMA);}    
+    public static void OPCION_NO_EXISTE() { System.out.println(OPCION_NO_VALIDA); }
 }
