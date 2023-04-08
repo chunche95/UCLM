@@ -12,12 +12,20 @@ package Interface;
  * @author Paulino Esteban Bermúdez Rodríguez | humancomputing.net
  */
 public interface Interface {
-    String username = System.getProperty ("user.name");
+    /**
+     * Variables necesarias del programa.
+     * FICHEROCSV Fichero CSV que contiene los datos con los que trabaja el programa 
+     * SEPARADOR Caracter que separa los datos en el archivo CSV
+     */    
     public static String FICHEROCSV = "src/main/java/Interface/marvel.csv";
     public static String SEPARADOR = ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)";
     
-    /*
+    /**
      * Mensajes del programa.
+     * Contiene:
+     * - MENUPRINCIPAL
+     * - FINPROGRAMA
+     * - OPCION_NO_EXISTE
      */
     static final String MENUPRINCIPAL = """
                     ·······················································
@@ -35,19 +43,36 @@ public interface Interface {
                                         Seleccione una opción: """;        
     
     static final String FINPROGRAMA = """
-                                     Gracias por usar MARVEL EN LA UCLM. 
-                                      Y recuerda! 
+                                     Gracias por usar MARVEL EN LA UCLM. \n
+                                      Y recuerda! \n
                                      \t Wakanda forever. - Black Panther.""";
     
     static final String OPCION_NO_EXISTE = """
-                    '''''''''''''''''''''''''''''''''''''''''''''''''''''''
-                    '                       Warning!!!!!!!!               '
-                    '''''''''''''''''''''''''''''''''''''''''''''''''''''''
-                                    OPCION NO VALIDA...
-                                           
+                    '''''''''''''''''''''''''''''''''''''''''''''''''''''''\n
+                    '                       Warning!!!!!!!!               '\n
+                    '''''''''''''''''''''''''''''''''''''''''''''''''''''''\n
+                                    OPCION NO VALIDA...\n\n                                           
                                            """;
-    /*
-     * Métodos que seran llamados 
+    static final String OPCION_1 = """
+                                   OPCION 1: Mostrar grafo con los personajes más sociables y menos sociables. \n\n
+                                   \t Obteniendo datos: \n
+                                   """;
+    static final String OPCION_2 = """
+                                   OPCION 2: Imprimir el camino más corto entre dos personajes. \n\n
+                                   \t Obteniendo datos: \n
+                                   """;
+    static final String OPCION_3 = """
+                                   OPCION 3. Diseñar el mejor equipo entre dos personajes datos. \n\n
+                                   \t Obteniendo datos: \n
+                                   """;
+    /**
+     * Métodos de llamada a los mensajes.
+     * - MENU_MAIN
+     * - OPCION_UNO
      */
-    public static void menuMain(){ System.out.println(MENUPRINCIPAL);}    
+    public static void MENU_MAIN(){ System.out.println(MENUPRINCIPAL);}
+    public static void OPCION_UNO(){ System.out.println(OPCION_1); }
+    public static void OPCION_DOS(){ System.out.println(OPCION_2);}
+    public static void OPCION_(){ System.out.println(OPCION_3);}
+    
 }
