@@ -1,0 +1,51 @@
+{
+  "DevContainersInfoBarHidden": true,
+  "ActiveTargetSystem": "192.168.1.250",
+  "MRUPresetsPerTargetSystem": {
+    "Máquina local": {
+      "configure": "x64-debug"
+    },
+    "WSL: Ubuntu": {
+      "configure": "linux-debug"
+    },
+    "192.168.132.129": {
+      "configure": "linux-debug"
+    }
+  },
+  "OutputFoldersPerTargetSystem": {
+    "Máquina local": [
+      "out\\build\\x64-debug",
+      "out\\install\\x64-debug",
+      "out\\build\\x64-release",
+      "out\\install\\x64-release",
+      "out\\build\\x86-debug",
+      "out\\install\\x86-debug",
+      "out\\build\\x86-release",
+      "out\\install\\x86-release"
+    ],
+    "WSL: Ubuntu": [
+      "out\\960490943\\build\\linux-debug",
+      "out\\960490943\\install\\linux-debug"
+    ],
+    "192.168.132.129": [
+      "out\\-1707432771\\build\\linux-debug",
+      "out\\-1707432771\\install\\linux-debug"
+    ],
+    "192.168.1.250": [
+      "out\\-175213455\\build\\linux-debug",
+      "out\\-175213455\\install\\linux-debug"
+    ],
+    "192.168.132.130": [
+      "out\\1021450593\\build\\linux-debug",
+      "out\\1021450593\\install\\linux-debug"
+    ]
+  },
+  "ExpandedNodes": [
+    "\\data",
+    "\\exec",
+    "\\include",
+    "\\out",
+    "\\src"
+  ],
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,3 @@
+D:/Documentos/UCLM/UCLM/PCTR/PCTR_Entregas/cmake-build-debug/CMakeFiles/PCTR_Entregas.dir
+D:/Documentos/UCLM/UCLM/PCTR/PCTR_Entregas/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Documentos/UCLM/UCLM/PCTR/PCTR_Entregas/cmake-build-debug/CMakeFiles/rebuild_cache.dir
