@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/PCTR_Entregas.dir/src/main.cpp.o CMakeFiles/PCTR_Entregas.dir/src/filosofo.cpp.o -o PCTR_Entregas 

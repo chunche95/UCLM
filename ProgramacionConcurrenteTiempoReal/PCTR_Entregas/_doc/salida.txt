@@ -1,0 +1,107 @@
+-------------- Terminando ------------- 
+Finalizando proceso [ 22165]... <Ok>
+Finalizando proceso [ 22168]... <Ok>
+Finalizando proceso [ 22169]... <Ok>
+
+ Liberando buzones... 
+
+ Fin del programa
+-------------- Terminando ------------- 
+-------------- Terminando ------------- 
+Finalizando proceso [ 22171]... <Ok>
+Finalizando proceso [ 22172]... <Ok>
+-------------- Terminando ------------- 
+
+Finalizando proceso [ 22171]... <Ok>
+ Liberando buzones... 
+Finalizando proceso [ 22176]... <Ok>
+
+
+-------------- Terminando ------------- 
+ Liberando buzones... 
+Finalizando proceso [ 22174]... <Ok>
+
+ Fin del programa (Control + C)
+ Fin del programa
+Finalizando proceso [ 22175]... <Ok>
+
+ Liberando buzones... 
+
+ Fin del programa (Control + C)
+Finalizando proceso [ 22165]... <Ok>
+
+ Liberando buzones... 
+
+ Fin del programa (Control + C)
+-------------- Terminando ------------- 
+Finalizando proceso [ 22162]... <Ok>
+Finalizando proceso [ 22163]... <Ok>
+Finalizando proceso [ 22164]... <Ok>
+Finalizando proceso [ 22166]... <Ok>
+
+ Liberando buzones... 
+
+-------------- Terminando ------------- 
+Finalizando proceso [ 22165]... <Ok>
+Finalizando proceso [ 22168]... <Ok>
+Finalizando proceso [ 22169]... <Ok>
+Finalizando proceso [ 22170]... <Ok>
+
+ Liberando buzones... 
+
+ Fin del programa (Control + C)
+ Fin del programa
+-------------- Terminando ------------- 
+Finalizando proceso [ 22171]... <Ok>
+Finalizando proceso [ 22172]... <Ok>
+Finalizando proceso [ 22173]... <Ok>
+
+ Liberando buzones... 
+
+ Fin del programa (Control + C)
+-------------- Terminando ------------- 
+Finalizando proceso [ 22162]... <Ok>
+Finalizando proceso [ 22163]... <Ok>
+Finalizando proceso [ 22164]... <Ok>
+
+ Liberando buzones... 
+
+ Fin del programa (Control + C)
+-------------- Terminando ------------- 
+Finalizando proceso [ 22162]... <Ok>
+Finalizando proceso [ 22163]... <Ok>
+Finalizando proceso [ 22180]... <Ok>
+Finalizando proceso [ 22181]... <Ok>
+
+ Liberando buzones... 
+
+ Fin del programa (Control + C)
+-------------- Terminando ------------- 
+Finalizando proceso [ 22162]... <Ok>
+Finalizando proceso [ 22177]... <Ok>
+Finalizando proceso [ 22178]... <Ok>
+Finalizando proceso [ 22179]... <Ok>
+
+ Liberando buzones...                                                                                                                                                                                                         
+ Fin del programa (Control + C)                                                                                                                                                                         
+-------------- Terminando -------------                                                                                                                                                                 
+Finalizando proceso [ 22162]... <Ok>                                                                                                                                                                    
+                                                                                                                                                                                                        
+ Liberando buzones...                                                                                                                                                                                   
+-------------- Terminando -------------                                                                                                                                                                 
+-------------- Terminando -------------                                                                                                                                                                 
+Finalizando proceso [ 22162]... <Ok>                                                                                                                                                                    
+Finalizando proceso [ 22163]... <Ok>                                                                                                                                                                    
+Finalizando proceso [ 22164]... <Ok>                                                                                                                                                                    
+Finalizando proceso [ 22166]... <Ok>                                                                                                                                                                    
+Finalizando proceso [ 22167]... <Ok>                                                                                                                                                                    
+                                                                                                                                                                                                        
+ Liberando buzones...                                                                                                                                                                                   
+                                                                                                                                                                                                        
+ Fin del programa                                                                                                                                                                                       
+-------------- Terminando -------------                                                                                                                                                                 
+Finalizando proceso [ 22174]... <Ok>                                                                                                                                                                    
+                                                                                                                                                                                                        
+ Liberando buzones...                                                                                                                                                                                   
+                                                                                                                                                                                                        
+Process finished with exit code 0   
