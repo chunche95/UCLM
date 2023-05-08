@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Practica_3_Obelix",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Practica_3_Obelix::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Practica_3_Obelix-Debug-f82367e35eebf3ac8927.json",
+					"name" : "Practica_3_Obelix",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/Documentos/UCLM/UCLM/ProgramacionConcurrenteTiempoReal/Laboratorio/Practica-3-Obelix/cmake-build-debug",
+		"source" : "D:/Documentos/UCLM/UCLM/ProgramacionConcurrenteTiempoReal/Laboratorio/Practica-3-Obelix"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
