@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -17,7 +16,6 @@ int random_number(int min, int max) {
 
 // Modulo principal del programa Obelix.
 int main(int argc,char *argv[]){
-
     // Define variables locales
     int pid = getpid();
     // Declaramos buzones necesarios para el programa.
@@ -43,7 +41,7 @@ int main(int argc,char *argv[]){
     struct mq_attr attr;
     attr.mq_flags = 0;
     attr.mq_maxmsg = NUMLINES;
-    attr.mq_msgsize = SIZE_MSG;
+    attr.mq_msgsize = MSG_SIZE;
     attr.mq_curmsgs = 0;
     // Creamos los buzones
     qHandlerLine = mq_open(BuzonLinea, O_RDWR, &attr);
@@ -61,11 +59,19 @@ int main(int argc,char *argv[]){
         int waitTime = random_number(1, 10);
         sleep(waitTime);
         // Verificamos si hay una llamada en la cola de mensajes
-        int recibirMensaje = mq_receive(qHandlerLine, buf, sizeof(SIZE_MSG+1), NULL);
-
+        int entryMessage = mq_receive(qHandlerLine, buf, sizeof(MSG_SIZE+1), NULL);
+        // Control de error al recibir
+        if ( entryMessage == -1 ) { perror("Error inesperado: Error al recibir el mensaje."); exit(EXIT_FAILURE); }
         printf("Linea [%d] recibida llamada (/%s)...\n", pid, buzonLinea);
         printf("Linea [%d] esperando fin de conversacion...\n", pid);
-        int send
+        int sendMessage = mq_send(qHandlerCall, buf, strlen(buzonLinea)+1, 0);
+        if ( sendMessage == -1 ) { perror("Error inesperado: Error al enviar el mensaje."); exit(EXIT_FAILURE); }
+        // Esperamos alguna notificacion de los telefonos indicando en fin de alguna llamada
+        int entryNewMessage  = mq_receive(qHandlerLine, buzonLinea ,sizeof(MSG_SIZE + 1), NULL);
+        if ( entryNewMessage == -1 ) { perror("Error inesperado: Error al recibir el mensaje"); exit(EXIT_FAILURE); }
+        printf("Linea [%d] conversación finalizada...\n",pid);
     }
+    // Cerramos la cola de mensajes
+    if ( mq_close(qHadlerLine) == -1 ) { perror("Ejecutado el cierre de la cola de mensajes: mq_close. \n"); exit(EXIT_FAILURE); }
     return EXIT_SUCCESS;
 }
