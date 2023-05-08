@@ -146,7 +146,7 @@ void lanzar_proceso_telefono(const int indice_tabla){
             fprintf(stderr, "[MANAGER] Error al lanzar el proceso TELEFONO: %s \n", strerror(errno));
             terminar_procesos();
             liberar_recursos();
-            break;
+            exit(EXIT_FAILURE);
         case 0:
             if  ( execl(RUTA_TELEFONO, CLASE_TELEFONO, NULL ) == -1 ) {
                 fprintf(stderr, "[MANAGER] Error al ejecutar la funcion execl en el proceso %s: %s \n", CLASE_TELEFONO,strerror(errno));
@@ -160,10 +160,52 @@ void lanzar_proceso_telefono(const int indice_tabla){
 void lanzar_proceso_linea(const int indice_tabla){
     pid_t pid;
     switch ( pid = fork() ) {
-        
+        case -1:
+            fprintf(stderr, "[MANAGER] Error al lanzar el proceso LINEAS: %s \n", strerror(errno));
+            terminar_procesos();
+            liberar_recursos();
+            exit(EXIT_FAILURE);
+        case 0:
+            char BuzonLinea[S_MSG];
+            sprintf(BuzonLinea, "%s%d", BUZON_LINEAS, indice_tabla);
+            if ( execl(RUTA_LINEA, CLASE_LINEA, BuzonLinea, NULL) == -1 ) {
+                fprintf(stderr, "[MANAGER] Error al ejecutar la funcion execl en el proceso %s: %s \n", CLASE_LINEA,strerror(errno));
+                exit(EXIT_FAILURE);
+            }
+    }
+    g_process_lineas_table[indice_tabla].pid = pid;
+    g_process_lineas_table[indice_tabla].clase = CLASE_LINEA;
+}
+void esperar_procesos(){
+    for (int i = 0; i < NUMLINEAS; ++i) {
+        waitpid(g_process_lineas_table[i].pid,0,0);
     }
 }
-void esperar_procesos(){}
-void terminar_procesos(void){}
-void terminar_procesos_especificos(struct TProcess_t *process_table, int process_num){}
-void liberar_recursos(){}
+void terminar_procesos(void){
+    printf("\n---- [MANAGER] Terminar con cualquier proceso pendiente ejecutándose ----");
+    for (int i = 0; i < g_lineasProcesses; ++i) {
+        if  ( g_process_lineas_table[i].pid != 0 ) {
+            printf("[MANAGER] Terminando proceso %s [%s]... \n", g_process_lineas_table[i].clase, g_process_lineas_table[i].pid );
+            if ( kill( g_process_lineas_table[i].pid , SIGINT) == -1 ) {
+                fprintf(stderr, "[MANAGER] Error al ejecutar la funcion kill() en el proceso %d: %s \n", g_process_lineas_table[i].pid, strerror(errno));
+            }
+        }
+    }
+    for (int i = 0; i < g_telefonosProcesses; ++i) {
+        if  ( g_process_telefonos_table[i].pid != 0 ) {
+            printf("[MANAGER] Terminando proceso %s [%s]... \n", g_process_telefonos_table[i].clase, g_process_telefonos_table[i].pid );
+            if ( kill(g_process_telefonos_table[i].pid, SIGINT) == -1 ) {
+                fprintf(stderr, "[MANAGER] Error al ejecutar la funcion kill() en el proceso %d: %s \n", g_process_telefonos_table[i].pid,strerror(errno));
+            }
+        }
+    }
+}
+void terminar_procesos_especificos(struct TProcess_t *process_table, int process_num){
+    printf("[MANAGER] Terminando proceso %s [%d] ... \n", process_table[process_num].clase, process_table[process_num].pid);
+    if ( kill(process_table[process_num].pid, SIGINT) == -1 ) { fprintf("[MANAGER] Error al ejecutar la funcion kill() en el proceso %d: %s \n", process_table[process_num].pid, strerror(errno)); }
+    else { process_table[process_num].pid = 0; }
+}
+void liberar_recursos(){
+    free(g_process_telefonos_table);
+    free(g_process_lineas_table);
+}

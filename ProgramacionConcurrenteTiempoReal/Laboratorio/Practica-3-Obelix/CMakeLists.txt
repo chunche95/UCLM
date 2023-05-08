@@ -3,4 +3,4 @@ project(Practica_3_Obelix C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(Practica_3_Obelix main.c src/linea.c src/linea.c src/linea.c)
+add_executable(Practica_3_Obelix main.c src/linea.c src/linea.c src/linea.c src/manager.c)
