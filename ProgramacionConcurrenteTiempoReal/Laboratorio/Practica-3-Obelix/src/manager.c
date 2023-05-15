@@ -35,13 +35,9 @@ int main(int argc, char *argv[])
 {
     // Controlamos la entrada de argumentos del programa
     if ( argc != 3 ) {
-        printf("-------------------------------------");
-        printf("--------------- Error ---------------");
-        printf("-------------------------------------");
-        printf("La entrada de argumentos es incorrecta.\n");
-        printf("Revise la entrada y vuelva a intentarlo de nuevo. \n\n");
-        printf("Ejemplo de ejecucion:\n");
-        printf("./exec/manager [n_telefonos] [n_lineas] \n");
+        printf("------------------------------------- \n --------------- Error --------------- \n -------------------------------------");
+        printf("La entrada de argumentos es incorrecta.\n Revise la entrada y vuelva a intentarlo de nuevo. \n\n");
+        printf("Ejemplo de ejecucion:\n ./exec/manager [n_telefonos] [n_lineas] \n");
     }
     // Define variables locales
 
@@ -77,10 +73,10 @@ int main(int argc, char *argv[])
 void crear_buzones(){
     // Buzon de llamadas
     struct mq_attr attr;
-    attr.mq_flags = 0;
-    attr.mq_maxmsg = N_LINES;
-    attr.mq_msgsize = M_SIZE;
-    attr.mq_curmsgs = 0;
+    //attr.mq_flags = 0; //*
+    attr.mq_maxmsg = NUMLINEAS;
+    attr.mq_msgsize = TAMANO_MENSAJES;
+    //attr.mq_curmsgs = 0; //*
 
     /*
      * Con mq_open, generamos una cola de mensajes con los siguientes atributos:
@@ -90,33 +86,36 @@ void crear_buzones(){
      * - &attr: Puntero con los atributos definidos para la cola de mensajes
      */
     qHandlerLlamadas = mq_open(BuzonLlamadas, O_CREAT | O_RDWR, S_IRUSR | S_IWUSR, &attr);
-    if ( qHalderLlamadas == ( mqd_t ) - 1 ) {
+    if ( qHalderLlamadas == - 1 ) {
         perror (" Error inesperado: \n Error al crear la cola de mensajes para llamadas. \n");
         exit(EXIT_FAILURE);
     }
     // Buzon de lineas
-    char BuzonLinea[M_SIZE];
-    for ( int i = 0; i < N_LINES; i++ ) {
+    char BuzonLinea[sizeof(BUZON_LINEAS)+2];
+    for ( int i = 0; i < NUMLINEAS; i++ ) {
         sprintf(BuzonLinea, "%s%d", BUZON_LINEAS, i);
-        qHandlerLineas[i] = mq_open(BuzonLinea | O_RDWR, S_IRUSR | S_IWUSR, &attr);
-        if ( qHandlerLineas[i] == (mqd_t) - 1 ) {
+        qHandlerLineas[i] = mq_open(BuzonLinea, O_CREAT | O_RDWR, S_IRUSR | S_IWUSR, &attr);
+        if ( qHandlerLineas[i] == - 1 ) {
             perror( " Error inesperado: \n Error al crear la cola de mensajes para lineas. \n");
             exit(EXIT_FAILURE);
         }
     }
 }
+
 void instalar_manejador_senhal(){
     if ( signal(SIGINT, manejador_senhal) == SIG_ERR ) {
         fprintf(stderr, "[MANAGER] Error al instalar el manejador de senhal: %s \n", strerror(errno));
         exit(EXIT_FAILURE);
     }
 }
+
 void manejador_senhal(int sign){
     terminar_procesos();
     liberar_recursos();
     printf("[MANAGER] [MANAGER] Terminacion del programa (Ctrl + C). \n");
     exit(EXIT_SUCCESS);
 }
+
 void iniciar_tabla_procesos(int n_procesos_telefono, int n_procesos_linea){
     g_process_telefonos_table = malloc(n_procesos_telefono * sizeof (struct TProcess_t));
     g_process_lineas_table = malloc(n_procesos_linea * sizeof(struct TProcess_t));
@@ -129,6 +128,7 @@ void iniciar_tabla_procesos(int n_procesos_telefono, int n_procesos_linea){
         g_process_telefonos_table[i].pid = 0;
     }
 }
+
 void crear_procesos(int numTelefonos, int numLineas){
     printf("[MANAGER] %d lineas creadas. ", numLineas);
     for (int i = 0; i < numLineas; ++i) {
@@ -139,6 +139,7 @@ void crear_procesos(int numTelefonos, int numLineas){
         lanzar_proceso_telefono(i);
     }
 }
+
 void lanzar_proceso_telefono(const int indice_tabla){
     pid_t pid;
     switch ( pid = fork() ) {
@@ -157,6 +158,7 @@ void lanzar_proceso_telefono(const int indice_tabla){
     g_process_telefonos_table[indice_tabla].pid = pid;
     g_process_telefonos_table[indice_tabla].clase = CLASE_TELEFONO;
 }
+
 void lanzar_proceso_linea(const int indice_tabla){
     pid_t pid;
     switch ( pid = fork() ) {
@@ -176,14 +178,16 @@ void lanzar_proceso_linea(const int indice_tabla){
     g_process_lineas_table[indice_tabla].pid = pid;
     g_process_lineas_table[indice_tabla].clase = CLASE_LINEA;
 }
+
 void esperar_procesos(){
     for (int i = 0; i < NUMLINEAS; ++i) {
         waitpid(g_process_lineas_table[i].pid,0,0);
     }
 }
+
 void terminar_procesos(void){
     printf("\n---- [MANAGER] Terminar con cualquier proceso pendiente ejecutándose ----");
-    for (int i = 0; i < g_lineasProcesses; ++i) {
+    for (int i = 0; i < NUMLINEAS ; ++i) {
         if  ( g_process_lineas_table[i].pid != 0 ) {
             printf("[MANAGER] Terminando proceso %s [%s]... \n", g_process_lineas_table[i].clase, g_process_lineas_table[i].pid );
             if ( kill( g_process_lineas_table[i].pid , SIGINT) == -1 ) {
@@ -200,12 +204,34 @@ void terminar_procesos(void){
         }
     }
 }
-void terminar_procesos_especificos(struct TProcess_t *process_table, int process_num){
+
+/*
+ * PTE DE COMPLETAR
+ * @param process_table
+ * @param process_num
+ */
+
+ /*void terminar_procesos_especificos(struct TProcess_t *process_table, int process_num){
     printf("[MANAGER] Terminando proceso %s [%d] ... \n", process_table[process_num].clase, process_table[process_num].pid);
-    if ( kill(process_table[process_num].pid, SIGINT) == -1 ) { fprintf("[MANAGER] Error al ejecutar la funcion kill() en el proceso %d: %s \n", process_table[process_num].pid, strerror(errno)); }
-    else { process_table[process_num].pid = 0; }
-}
+    if ( kill(g_process_lineas_table[process_num].pid, SIGINT) == -1 ) { fprintf("[MANAGER] Error al ejecutar la funcion kill() en el proceso %d: %s \n", process_table[process_num].pid, strerror(errno)); }
+    else { g_process_lineas_table[process_num].pid = 0; }
+}*/
+
+/**
+ * Liberar recursos del sistema
+ */
 void liberar_recursos(){
+    // LLAMADAS
+    mq_close(qHandlerLlamadas);
+    mq_unlink(BUZON_LLAMADAS);
+    // LINEAS
+    for ( int i = 0; i < NUMLINEAS; i++ ) {
+        mq_close(qHandlerLineas[i]);
+        char nombreColaLineas[sizeof(BUZON_LINEAS)+2];
+        sprintf(nombreColaLineas, "%s%d", BUZON_LINEAS, i);
+        mq_unlink(nombreColaLineas);
+    }
+    // MALLOC
     free(g_process_telefonos_table);
     free(g_process_lineas_table);
 }
