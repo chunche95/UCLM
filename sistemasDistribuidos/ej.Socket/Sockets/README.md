@@ -1,0 +1,5 @@
+# Introducción a los sockets
+
+Cuando dos programas quieren comunicarse, estando en ordenadores distintos o no, pueden hacerlo por medio de sockets.
+Un socket es un 'flujo' de datos que un programa envía a otro. Para ello, uno de los programas debe conocer la dirección IP donde está ubicado el otro y en qué puerto está atendiendo. Es decir, el programa A puede enviar datos al programa B que está corriendo en un ordenador cuya IP es 8.8.8.8 (por poner un ejemplo) y el puerto 80. La IP es la dirección del oordenador en la red, cada ordenador dentro de su red debe tener un número único. El puerto sólo es un número de 1 a 65535 de forma que puede haber hasta 65535 programas distintos atendiendo cada uno a su puerto.
+Hay tres tipos de sockets: TCP/IP, Unicast - con su variante broadcast y Multicast.
