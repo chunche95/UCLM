@@ -1,0 +1,17 @@
+{
+	"nodes":[
+		{"id":"dd734914aa951a1d","type":"group","x":-360,"y":-320,"width":1473,"height":602,"color":"6","label":"Schema basic socket"},
+		{"id":"a44325fb057383a9","type":"group","x":-340,"y":-260,"width":541,"height":516,"color":"4","label":"Sockets"},
+		{"id":"14a9de13c39352d9","type":"text","text":"A tener en cuenta:\n- en el servidor, si trabaja en un servidor Apache como XAML en local, deberá poner localhost. Si trabajas con IPS, debe cambiar la IP correspondiente.\n- Debe cambiarse el puerto según la necesidad.\n- En el código #servidor hemos puesto addr[0] que hace referencia al host y addr[1] que lo hace al puerto.\n- Si usa Windows y falla la conexión, revise el Firewall y añada Python como excepción.\n- Los ficheros ( #cliente como #servidor ) deben tener extensión .py\n- Debe ejecutar el código en dos ventanas SSH diferentes para que se puedan comunicar entre ellas.","x":400,"y":-275,"width":693,"height":373,"color":"4"},
+		{"id":"961ad781ad308379","type":"text","text":"Socket en Python. - Conexión Cliente-Servidor","x":-320,"y":-240,"width":400,"height":60,"color":"1"},
+		{"id":"b4a525b2018d7834","type":"text","text":"Un programa cliente-servidor es aquel que abre una conexión entre ambos y permite su comunicación. El cliente realiza peticiones al servidor que la escucha antes de emitir una respuesta.","x":-320,"y":-104,"width":501,"height":140,"color":"2"},
+		{"id":"9a4fdd72e8cfbe41","type":"text","text":"¿Por qué en Python?\nSe trata de un lenguaje muy sencillo y práctico, y porque copiando las siguientes lineas en un cliente y un servidor, puedes tenerlo funcionando en minutos.","x":-320,"y":96,"width":501,"height":140,"color":"3"},
+		{"id":"b28b596488d1bfaf","type":"text","text":"[[Programa cliente-servidor.canvas|Programa cliente-servidor]] ","x":400,"y":200,"width":260,"height":62,"color":"5"}
+	],
+	"edges":[
+		{"id":"0aa6ac8118ac0209","fromNode":"961ad781ad308379","fromSide":"bottom","toNode":"b4a525b2018d7834","toSide":"top","color":"1"},
+		{"id":"10b046bc13022b53","fromNode":"b4a525b2018d7834","fromSide":"bottom","toNode":"9a4fdd72e8cfbe41","toSide":"top","color":"1"},
+		{"id":"98d886b368762c3c","fromNode":"a44325fb057383a9","fromSide":"right","toNode":"14a9de13c39352d9","toSide":"left","color":"4","label":"recomendaciones"},
+		{"id":"8be20ce5bd9a7459","fromNode":"14a9de13c39352d9","fromSide":"bottom","toNode":"b28b596488d1bfaf","toSide":"top","color":"4","label":"ver código"}
+	]
+}

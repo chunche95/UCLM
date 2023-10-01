@@ -1,0 +1,17 @@
+{
+	"nodes":[
+		{"id":"040fff16930e8a35","type":"group","x":0,"y":440,"width":610,"height":100,"color":"6","label":"Ejemplo de ejecución."},
+		{"id":"5ce829cf3b557103","type":"text","text":"#!/usr/bin/env python3\n\n#variables\nhost='localhost'\nport=8050\n#Importacion de modulos\nimport socket\n#Creación de un objeto socket (lado cliente)\nobj = socket.socket()\n#Conexión con el servidor. \n#Parametros \n- IP (localhost o IP del equipo al que nos conectamos) \n- puerto\nobj.connect((host, port)) #tupla para la conexión cliente-servidor\nprint(\"Conectado al servidor\")\n#Bucle para retener la conexión\nwhile True:\n\t#Instancia una entrada de datos para que el cliente pueda enviar mensajes\n\tmens = raw_input(\"Mensaje desde cliente a servidor >> \")\n\t#envio del mensaje con el método #send\n\tobj.send(mens)\n#Cerramos la instancia del objeto servidor\nobj.close()\n#imprimir mensaje de cierre al cerrar conexión \nprint(\"Conexión cerrada\")","x":-340,"y":-420,"width":640,"height":680,"color":"3"},
+		{"id":"d5504c6d56cf05be","type":"text","text":"#!/usr/bin/env python3\n\n#Importar modulo\nimport socket\n#instanciar objeto para trabajar con el socket\nserv = socket.socket( socket.AF_INET , socket.SOCKE_STREAM )\n#Puerto y #servidor que debe escuchar\nserv.bind(( \"\" , 8050 )) #tupla de conexión\n#Aceptamos_conexiones entrantes con el método listen. Por parámetro, las conexiones simultáneas.\nserv.listen(1)\n#Instanciamos un objeto cli (socket cliente) para recibir datos\ncli, addr = serv.accept()\n\nwhile True:\n\t#Recibimos_mensaje, con el método #recv captamos los datos. Por parámetro la cantidad de bytes para recibir.\n\trecibido = cli.recv(1024)\n\t#Muestra = #IP+ #Mensaje recibido\n\tprint(\"Recibo conexión de la IP: \" + str(addr[0]) + \" puerto \" + addr(addr[1]))\n\t#Devolvemos el mensaje al cliente\n\tcli.send(mensaje recibido)\n#cerramos instancia del socket cliente y servidor\ncli.socket()\nserv.close()\n\nprint(\"Conexiones cerradas\")\n\t","x":340,"y":-420,"width":653,"height":680,"color":"4"},
+		{"id":"4e29e167b6a42301","type":"text","text":"chmod +x server.py\n./server.py","x":340,"y":460,"width":250,"height":60,"color":"4"},
+		{"id":"223db57b567c6ba4","type":"text","text":"chmod +x client.py\n./client.py","x":20,"y":460,"width":250,"height":60,"color":"3"},
+		{"id":"35fdf4e20b0ae3bc","type":"text","text":"# Modulo servidor","x":340,"y":-523,"width":300,"height":50,"color":"1"},
+		{"id":"e8eb76f96dc0e2fa","type":"text","text":"# Modulo cliente","x":-340,"y":-523,"width":277,"height":50,"color":"1"}
+	],
+	"edges":[
+		{"id":"4369e46c0ec910ca","fromNode":"35fdf4e20b0ae3bc","fromSide":"bottom","toNode":"d5504c6d56cf05be","toSide":"top"},
+		{"id":"85eb1a9598e8a57f","fromNode":"e8eb76f96dc0e2fa","fromSide":"bottom","toNode":"5ce829cf3b557103","toSide":"top"},
+		{"id":"1931624972d0e758","fromNode":"5ce829cf3b557103","fromSide":"bottom","toNode":"040fff16930e8a35","toSide":"top","color":"3","label":"nueva terminal"},
+		{"id":"cf97f1446ff7b950","fromNode":"d5504c6d56cf05be","fromSide":"bottom","toNode":"040fff16930e8a35","toSide":"top","color":"4","label":"nueva terminal"}
+	]
+}

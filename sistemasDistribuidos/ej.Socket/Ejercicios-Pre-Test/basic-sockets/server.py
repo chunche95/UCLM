@@ -2,7 +2,7 @@
 
 import socket, warnings
 
-IP_SERVER = '172.29.194.5'
+IP_SERVER = 'localhost'
 PORT_SERVER = 4080
 # Control de errores con warnings
 custom_warning = 'Warning: Message not ASCII. Message will be sent as UTF-8'
