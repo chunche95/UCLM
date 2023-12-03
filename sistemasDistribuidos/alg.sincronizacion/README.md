@@ -14,5 +14,28 @@ El tiempo de ida y vuelta se refiere al tiempo de duracion entre el inicio de la
 
 $$ T_cliente=T_server+((T_1-T_0))/2 $$
 
+** El error en la sincronización puede ser como máximo de $$ (T_1-T_0)/2 $$ segundos como máximo. ** 
+$$ error ∈[-(T_1-T_0)/2,(T_1-T_0)/2] $$
+
+### Programa python
+#### Server
+```py
+import socket
+import datetime
+
+# Function user to initiate the clock server
+def initiateClockServer():
+    
+    ssock = socket.socket() # Socket socket 
+    print("Socket successfully established") 
+    
+    sport = 8000 # Server port number 
+    ssock.bind(()'', sport)) # Socket server address and port number to connect 
+
+    # Start listening for requests
+    ssock.listen(5) # Start listening for requests
+    print("Listening for requests...")
+    
+```
 
 # Algoritmo de Berkeley
