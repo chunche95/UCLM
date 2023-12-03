@@ -116,4 +116,5 @@ Ahora, los nodos esclavos devuelven el tiempo dado por el reloj de su sistema.
 ![](img/sync-berkeley.png)
 
 3. El nodo maestro calcula la diferencia de tiempo promedio entre todas las horas de reloj recibidas y la hora de reloj proporcionada por el propio reloj del sistema maestro. Esta diferencia de tiempo promedio se agrega a la hora en el reloj del sistema del maestro y se transmite por la red.
+
 ![](img/result-sync.png)
