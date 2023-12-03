@@ -15,8 +15,11 @@ El tiempo de ida y vuelta se refiere al tiempo de duracion entre el inicio de la
 $$ T_cliente=T_server+((T_1-T_0))/2 $$
 
 **El error en la sincronización puede ser como máximo de** 
+
 $$ (T_1-T_0)/2 $$ 
-**segundos como máximo.**
+
+segundos como máximo.
+
 $$ error ∈[-(T_1-T_0)/2,(T_1-T_0)/2] $$
 
 ### Programa python
