@@ -96,3 +96,15 @@ if __name__ == "__main__":
     syncTime()
 ```
 # Algoritmo de Berkeley
+Es una técnica de sincronización de reloj usada en sistemas distribuidos. El algoritmo asume que cada Nodo de máquina en la red no tiene una fuente de tiempo precisa o no posee un servidor UTC.
+## Algoritmo
+1. Se elige un nodo individual como nodo maestro de un nodo de grupo en la red. Este nodo es el nodo principal de la red que actúa como maestro y el resto de los nodos actúan como esclavos. 
+*El nodo maestro se elige mediante un procesos de elección/algoritmo de elección de lider.*
+2. El nodo maestro hace ping periódicamente a los nodos esclavos y obtiene la hora del reloj usando el algoritmo de Cristian.
+
+El siguiente diagrama ilustra cómo el maestro envía request a los nodos esclavos.
+![](img/berkeley-distri-net.png)
+Ahora, los nodos esclavos devuelven el tiempo dado por el reloj de su sistema.
+![](img/sync-berkeley.png)
+3. El nodo maestro calcula la diferencia de tiempo promedio entre todas las horas de reloj recibidas y la hora de reloj proporcionada por el propio reloj del sistema maestro. Esta diferencia de tiempo promedio se agrega a la hora en el reloj del sistema del maestro y se transmite por la red.
+![](result-sync.png)
