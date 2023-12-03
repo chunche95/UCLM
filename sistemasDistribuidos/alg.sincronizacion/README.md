@@ -12,8 +12,7 @@ El tiempo de ida y vuelta se refiere al tiempo de duracion entre el inicio de la
 2. El servidor de reloj escucha la solicitud realizada por el proceso del cliente y devuelve la respuesta en forma de hora del servidor de reloj.
 3. El proceso del cliente obtiene la respuesta del servidor de reloj a la hora T1 y calcula la hora sincronizada del reloj del cliente usando la fórmula siguiente:
 
-```latex
-T_cliente=T_server+((T_1-T_0))/2
-```
+$$ T_cliente=T_server+((T_1-T_0))/2 $$
+
 
 # Algoritmo de Berkeley
