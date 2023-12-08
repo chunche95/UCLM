@@ -18,13 +18,20 @@
             padding: 10px;
             margin: 5em 10em 5em 10em;
         }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 2px solid #1a4f78;
+            align-content: center;
+            padding: 120px;
+        }
     </style>
-
     <title>Pagina de inicio</title>
 </head>
+<body>
     <h1>Starting with Spring Boot</h1>
-    <div th:if="${lpersonas != null and !lpersonas.empty}">
-        <table border="2" align="center">
+    <div th:if="${individuos != null and !individuos.empty}">
+        <table>
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -35,9 +42,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="persona : ${lpersonas}">
+                <tr th:each="persona : ${individuos}">
                     <td th:text="${persona.nombre}"> </td>
-                    <td th:text="${persona.apellido}"> </td>
+                    <td th:text="${persona.apellidos}"> </td>
                     <td th:text="${persona.edad}"> </td>
                     <td th:text="${persona.telefono}"> </td>
                     <td th:text="${persona.email}"> </td>
@@ -45,13 +52,13 @@
             </tbody>
         </table>
     </div>
-    <div th:if="${lpersonas == null or lpersonas.empty}">
+    <div th:if="${individuos == null or individuos.empty}">
         <h3>No hay personas registradas</h3>
     </div>
 
-<br>
-<br>
-<br>
-<br>
+    <br>
+    <br>
+    <br>
+    <br>
 </body>
 </html>

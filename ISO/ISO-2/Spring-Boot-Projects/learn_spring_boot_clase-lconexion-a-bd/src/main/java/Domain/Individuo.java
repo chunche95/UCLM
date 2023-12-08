@@ -3,13 +3,15 @@ package Domain;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name = "usuarios")
+//@Table(name = "usuarios")
 public class Individuo implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -18,7 +20,6 @@ public class Individuo implements Serializable {
     private String nombre;
     private String apellidos;
     private int edad;
-    private int telefono;
+    private String telefono;
     private String email;
-    private String password;
 }
