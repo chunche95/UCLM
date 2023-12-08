@@ -1,0 +1,120 @@
+.container{
+  min-height: 100vh;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.page404 {
+  width: 600px;
+  height: auto;
+}
+
+#tree{
+  stroke: #59513C;
+}
+
+#wood-stump{
+  stroke: #59513C;
+  -webkit-animation: wood-stump 3s infinite ease-in-out;
+  -moz-animation: wood-stump 3s infinite ease-in-out;
+  -o-animation: wood-stump 3s infinite ease-in-out;
+  animation: wood-stump 3s infinite ease-in-out;
+}
+
+@-webkit-keyframes wood-stump{ 0% { -webkit-transform: translate(100px)  } 50% { -webkit-transform:  translate(50px); } 100% { -webkit-transform:  translate(100px); } }
+@-moz-keyframes wood-stump{ 0% { -moz-transform:  translate(100px);  } 50% { -moz-transform:  translate(50px); } 100% { -moz-transform:  translate(100px); } }
+@-o-keyframes wood-stump{ 0% { -o-transform:  translate(100px);  } 50% { -o-transform:  translate(50px); } 100% { -o-transform:  translate(100px); } }
+@keyframes wood-stump{ 0% {-webkit-transform:  translate(100px);-moz-transform:  translate(100px);-ms-transform:   translate(100px);transform:  translate(100px);  } 50% {-webkit-transform:  translate(0px);-moz-transform:  translate(0px);-ms-transform:  translate(0px);transform:  translate(0px); } 100% {-webkit-transform:  translate(100px); -moz-transform:  translate(100px);-ms-transform:  translate(100px);transform:  translate(100px); } }
+
+
+#leaf{
+  stroke: #59513C;
+  -webkit-animation: leaf 7s infinite ease-in-out;
+  -moz-animation: leaf 7s infinite ease-in-out;
+  -o-animation: leaf 7s infinite ease-in-out;
+  animation: leaf 7s infinite ease-in-out;
+}
+
+@-webkit-keyframes leaf{ 0% { -webkit-transform: translate(0, 70px)  } 50% { -webkit-transform:  translate(0, 50px); } 100% { -webkit-transform:  translate(0, 70px); } }
+@-moz-keyframes leaf{ 0% { -moz-transform:  translate(0, 70px);  } 50% { -moz-transform:  translate(0, 50px); } 100% { -moz-transform:  translate(0, 70px); } }
+@-o-keyframes leaf{ 0% { -o-transform:  translate(0, 70px);  } 50% { -o-transform:  translate(0, 50px); } 100% { -o-transform:  translate(0, 70px); } }
+@keyframes leaf{ 0% {-webkit-transform:  translate(0, 70px);-moz-transform:  translate(0, 70px);-ms-transform:   translate(0, 70px);transform:  translate(0, 70px);  } 50% {-webkit-transform:  translate(0px);-moz-transform:  translate(0px);-ms-transform:  translate(0px);transform:  translate(0px); } 100% {-webkit-transform:  translate(0, 70px); -moz-transform:  translate(0, 70px);-ms-transform:  translate(0, 70px);transform:  translate(0, 70px); } }
+
+#border{
+  stroke: #59513C;
+}
+
+#Page{
+  fill: #59513C;
+}
+#notFound{
+  fill: #A7444B;
+}
+
+ /* CSS */
+.button-3 {
+ appearance: none;
+ background-color: #2ea44f;
+ border: 1px solid rgba(27, 31, 35, .15);
+ border-radius: 6px;
+ box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+ box-sizing: border-box;
+ color: #fff;
+ cursor: pointer;
+ display: inline-block;
+ font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+ font-size: 24px;
+ font-weight: 600;
+ line-height: 40px;
+ padding: 6px 26px;
+ position: relative;
+ text-align: center;
+ text-decoration: none;
+ user-select: none;
+ -webkit-user-select: none;
+ touch-action: manipulation;
+ vertical-align: middle;
+ white-space: nowrap;
+}
+
+.button-3:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.button-3:hover {
+  background-color: #2c974b;
+}
+
+.button-3:focus {
+  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+  outline: none;
+}
+
+.button-3:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+.button-3:active {
+  background-color: #298e46;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
