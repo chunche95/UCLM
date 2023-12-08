@@ -1,0 +1,30 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pagina de inicio</title>
+</head>
+<body>
+    <h1>Esta es la página de inicio</h1>
+    <pre>
+        <h2>Titulos</h2>
+        <a href="/addTitle">Añadir Titulo</a>
+        <a href="/updateTitle">Modificar Titulo</a>
+        <a href="/titles">Titulos</a>
+        <h2>Autores</h2>
+        <a href="/addAuthor">Añadir Autor</a>
+        <a href="/updateAuthor">Modificar Autor</a>
+        <a href="/authors">Autores</a>
+        <h2>Usuarios</h2>
+        <a href="/users/new">Registrar Usuario</a>
+        <a href="/updateUsers">Modificar Usuario</a>
+        <a href="/users">Ver listado de Usuario</a>
+    </pre>
+    <p th:text='BibliotecaGranVía'>
+
+    </p>
+</body>
+</html>
