@@ -1,0 +1,57 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+        body, html {
+            height: 100%;
+            color: #1a4f78;
+            line-height: 1.8;
+            padding: 10px;
+            margin: 5em 10em 5em 10em;
+        }
+    </style>
+
+    <title>Pagina de inicio</title>
+</head>
+    <h1>Starting with Spring Boot</h1>
+    <div th:if="${lpersonas != null and !lpersonas.empty}">
+        <table border="2" align="center">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Teléfono</th>
+                    <th>E-Mail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="persona : ${lpersonas}">
+                    <td th:text="${persona.nombre}"> </td>
+                    <td th:text="${persona.apellido}"> </td>
+                    <td th:text="${persona.edad}"> </td>
+                    <td th:text="${persona.telefono}"> </td>
+                    <td th:text="${persona.email}"> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:if="${lpersonas == null or lpersonas.empty}">
+        <h3>No hay personas registradas</h3>
+    </div>
+
+<br>
+<br>
+<br>
+<br>
+</body>
+</html>
