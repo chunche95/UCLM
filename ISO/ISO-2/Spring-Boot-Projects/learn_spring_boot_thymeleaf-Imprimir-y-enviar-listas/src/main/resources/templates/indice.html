@@ -13,18 +13,17 @@
         <h2>Titulos</h2>
         <a href="/addTitle">Añadir Titulo</a>
         <a href="/updateTitle">Modificar Titulo</a>
-        <a href="/titles">Titulos</a>
+        <a href="/titles">Ver listado de Títulos</a>
         <h2>Autores</h2>
         <a href="/addAuthor">Añadir Autor</a>
         <a href="/updateAuthor">Modificar Autor</a>
-        <a href="/authors">Autores</a>
+        <a href="/authors">Ver listado de Autores</a>
         <h2>Usuarios</h2>
         <a href="/users/new">Registrar Usuario</a>
         <a href="/updateUsers">Modificar Usuario</a>
         <a href="/users">Ver listado de Usuario</a>
     </pre>
-    <p th:text='BibliotecaGranVía'>
-
-    </p>
+    <p th:text="${variable}"> </p>
+    <p th:text="${variable_privada}"> </p>
 </body>
 </html>
