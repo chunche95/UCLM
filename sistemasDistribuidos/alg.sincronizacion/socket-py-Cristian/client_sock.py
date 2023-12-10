@@ -10,10 +10,10 @@ def syncTime():
     csock = socket.socket()
 
     # server port number
-    port = 8001
+    port = 4080
 
     # connect to the clock server on remote ip
-    csock.connect(('localhost', port))
+    csock.connect(('192.168.8.224', port))
 
     requestTime = timer()
 
