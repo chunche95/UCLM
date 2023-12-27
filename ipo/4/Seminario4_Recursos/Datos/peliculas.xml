@@ -1,0 +1,38 @@
+<Peliculas>
+	<Pelicula Titulo="Nebraska" Anio="2013" Duracion="110" Argumento ="A Woody Grant, un anciano con síntomas de demencia..." 
+            Caratula ="Imagenes/cartel1.jpg" Director="Alexander Payne" Genero="Drama" 
+            AltaEnVideoteca="04/09/2021" Visualizada="true" URL_IMDB="https://www.imdb.com/title/tt1821549/?ref_=fn_al_tt_1"/>
+  <Pelicula Titulo="Entrevista con el vampiro" Anio="1994" Duracion="122" Argumento ="Lestat de Lioncourt es un vampiro..." 
+            Caratula ="Imagenes/cartel2.jpg" Director="Neil Jordan" Genero="Terror" 
+            AltaEnVideoteca="10/10/2021" Visualizada="true" URL_IMDB="https://www.imdb.com/title/tt0110148/?ref_=fn_al_tt_1"/>
+  <Pelicula Titulo="Pequeña Miss Sunshine" Anio="2006" Duracion="101" Argumento="Los Hoover son una familia muy peculiar..." 
+            Caratula ="Imagenes/cartel3.jpg" Director="Jonathan Dayton" Genero="Comedia" 
+            AltaEnVideoteca="02/01/2020 " Visualizada="false" URL_IMDB="https://www.imdb.com/title/tt0449059/?ref_=fn_al_tt_1"/>
+  <Pelicula Titulo="El cuervo" Anio="1994" Duracion="97" Argumento="Eric Draven y Shelly Webster están a punto de casarse, pero..." 
+            Caratula ="Imagenes/cartel4.jpg" Director="Alex Proyas" Genero="Drama" 
+            AltaEnVideoteca="07/04/2019" Visualizada="false" URL_IMDB="https://www.imdb.com/title/tt0109506/?ref_=fn_al_tt_1"/>
+  <Pelicula Titulo="El día de la bestia" Anio="1995" Duracion="103" Argumento="Un sacerdote cree haber descifrado el mensaje secreto del Apocalipsis..." 
+            Caratula ="Imagenes/cartel5.jpg" Director="Álex de la Iglesia" Genero="Comedia" 
+            AltaEnVideoteca="15/05/2020" Visualizada="false" URL_IMDB="https://www.imdb.com/title/tt0112922/?ref_=fn_al_tt_1"/>
+  <Pelicula Titulo="Thelma y Louise" Anio="1991" Duracion="128" Argumento="Thelma Dickinson, una ama de casa de vida vacía y anodina..." 
+            Caratula ="Imagenes/cartel6.jpg" Director="Ridley Scott" Genero="Drama" 
+            AltaEnVideoteca="10/06/2019" Visualizada="true" URL_IMDB="https://www.imdb.com/title/tt0103074/?ref_=fn_al_tt_1"/>
+  <Pelicula Titulo="Los inmortales" Anio="1986" Duracion="110" Argumento="Los Inmortales son seres de una raza especial que sólo pueden morir decapitados..." 
+            Caratula ="Imagenes/cartel7.jpg" Director="Russell Mulcahy" Genero="Drama" 
+            AltaEnVideoteca="11/11/2020" Visualizada="false" URL_IMDB="https://www.imdb.com/title/tt0091203/?ref_=fn_al_tt_1"/>
+  <Pelicula Titulo="Pesadilla antes de Navidad" Anio="1993" Duracion="75" Argumento="Cuando Jack Skellington, el Señor de Halloween, descubre la Navidad..." 
+            Caratula ="Imagenes/cartel8.jpg" Director="Henry Selick" Genero="Animación" 
+            AltaEnVideoteca="09/12/2020" Visualizada="false" URL_IMDB="https://www.imdb.com/title/tt0107688/?ref_=fn_al_tt_1"/>
+  <Pelicula Titulo="Romeo + Juliet" Anio="1996" Duracion="120" Argumento="En Verona Beach se suceden los enfrentamientos entre las dos familias..." 
+            Caratula ="Imagenes/cartel9.jpg" Director="Baz Luhrmann" Genero="Drama" 
+            AltaEnVideoteca="15/10/2020" Visualizada="true" URL_IMDB="https://www.imdb.com/title/tt0117509/?ref_=nv_sr_srsg_0"/>
+  <Pelicula Titulo="Wall-e" Anio="2008" Duracion="103" Argumento="En el año 2800, en un planeta Tierra devastado y sin vida..." 
+            Caratula ="Imagenes/cartel10.jpg" Director="Andrew Stanton" Genero="Animación" 
+            AltaEnVideoteca="12/04/2021" Visualizada="false" URL_IMDB="https://www.imdb.com/title/tt0910970/?ref_=fn_al_tt_1"/>
+  <Pelicula Titulo="Bocados de Realidad" Anio="1994" Duracion="99" Argumento="Lelaina Pierce, ayudante de producción en un programa matinal..." 
+            Caratula ="Imagenes/cartel11.jpg" Director="Ben Stiller" Genero="Comedia" 
+            AltaEnVideoteca="11/02/2021" Visualizada="true" URL_IMDB="https://www.imdb.com/title/tt0110950/?ref_=fn_al_tt_1"/>
+  <Pelicula Titulo="Tomates verdes fritos" Anio="1991" Duracion="129" Argumento="Evelyn, una mujer madura que vive frustrada..." 
+            Caratula ="Imagenes/cartel12.jpg" Director="Jon Avnet" Genero="Drama" 
+            AltaEnVideoteca="04/09/2021" Visualizada="false" URL_IMDB="https://www.imdb.com/title/tt0101921/?ref_=fn_al_tt_1"/>
+</Peliculas>
