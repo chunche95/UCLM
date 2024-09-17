@@ -117,3 +117,39 @@ Este enfoque facilita la captura de errores y mantiene el código más limpio.
 4. Los errores se pueden manejar con `.catch()` o un bloque `try/catch` al usar `async/await`.
 
 Estas herramientas son esenciales para manejar la asincronía en aplicaciones web, como realizar solicitudes HTTP, operaciones en bases de datos, o manejar eventos del usuario.
+
+---
+
+## MERN Stack.
+El **MERN Stack** es un conjunto de tecnologías de desarrollo web que permite construir aplicaciones full-stack de manera eficiente utilizando JavaScript en todas las capas de la aplicación (front-end, back-end, y base de datos). Está compuesto por cuatro tecnologías principales:
+
+1. **MongoDB**: Una base de datos NoSQL orientada a documentos que almacena los datos en formato JSON. Se utiliza para manejar grandes volúmenes de datos no estructurados o semi-estructurados, permitiendo flexibilidad en la organización de la información.
+
+2. **Express.js**: Un framework minimalista de Node.js para el lado del servidor que facilita la creación de APIs y el manejo de solicitudes HTTP de manera sencilla y estructurada.
+
+3. **React.js**: Una biblioteca de JavaScript desarrollada por Facebook que se usa para crear interfaces de usuario interactivas y dinámicas en el front-end. React permite construir componentes reutilizables y gestionar el estado de la aplicación de manera eficiente.
+
+4. **Node.js**: Un entorno de ejecución para JavaScript que permite usar este lenguaje en el lado del servidor, permitiendo la creación de aplicaciones escalables y de alto rendimiento.
+
+### ¿Cómo funciona el desarrollo con MERN?
+El flujo típico de desarrollo en MERN es el siguiente:
+
+- **Front-end (React)**: React se encarga de la interfaz de usuario, interactuando con el usuario y realizando llamadas a las APIs para obtener o enviar datos. Por ejemplo, cuando un usuario envía un formulario, React envía los datos a través de una solicitud HTTP.
+  
+- **Back-end (Node.js + Express.js)**: El servidor Express recibe las solicitudes del front-end, realiza la lógica de negocio y se comunica con la base de datos para almacenar o recuperar información. Node.js permite manejar múltiples conexiones de manera eficiente gracias a su modelo de I/O no bloqueante.
+
+- **Base de datos (MongoDB)**: MongoDB almacena los datos que el back-end gestiona. Como es una base de datos NoSQL, los datos se almacenan en colecciones y documentos, en lugar de en tablas y filas como en una base de datos relacional tradicional.
+
+### Ejemplo de flujo MERN Stack:
+1. Un usuario visita una aplicación construida con React, que carga una página donde puede ver y agregar comentarios.
+2. React realiza una solicitud HTTP al servidor Express para obtener los comentarios existentes desde la base de datos MongoDB.
+3. El servidor Express consulta MongoDB y devuelve los datos a React.
+4. El usuario agrega un nuevo comentario en el front-end, que React envía al servidor Express.
+5. Express valida y guarda el nuevo comentario en MongoDB.
+
+### Ventajas del MERN Stack:
+- **Un solo lenguaje**: Usar JavaScript en todo el stack simplifica el desarrollo, ya que los desarrolladores no necesitan aprender varios lenguajes para diferentes capas de la aplicación.
+- **Componentización en React**: Permite crear interfaces interactivas y reutilizables de manera modular.
+- **Ecosistema open-source**: Todas las tecnologías del stack son de código abierto, lo que facilita su adopción y mejora constante por la comunidad.
+
+El MERN Stack es una opción popular para construir aplicaciones web modernas, desde proyectos pequeños hasta aplicaciones de gran escala debido a su flexibilidad y escalabilidad.
