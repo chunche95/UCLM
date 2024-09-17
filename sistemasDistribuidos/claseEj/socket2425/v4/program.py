@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import socket
 import struct
+import argparse
 
 parser = argparse.ArgumentParser()
 
@@ -25,9 +26,10 @@ def server():
         print("{} + {} = {}".format(n1,n2,result))
 def client():
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
-        n1 = int(input("Enter first number: "))
-        n2 = int(input("Enter second number: "))
-        s.sendto(struct.pack('ii', n1, n2), ('localhost', 5000))
+        n1 = 4
+        n2 = 3
+        s.sendto(struct.pack('!ii', n1, n2), ('localhost', 5000))
               
-server if args.mode =='server' else client
-        
+
+exec_func = server if args.mode =='server' else client
+exec_func()
