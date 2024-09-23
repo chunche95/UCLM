@@ -1,0 +1,12 @@
+{
+    "name": "crud",
+    "version": "0.0.1",
+    "main":"index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "mongodb": "^4.1.0",
+        "dotenv": "^10.0.0"
+    }
+}
